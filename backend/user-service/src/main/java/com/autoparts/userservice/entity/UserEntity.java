@@ -1,8 +1,15 @@
-package com.autoparts.userservice.core.dto;
+package com.autoparts.userservice.entity;
+
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
-public class UserDto {
+@Entity
+@Table(name = "user")
+public class UserEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
     private String username;
@@ -14,7 +21,10 @@ public class UserDto {
 
     private String phone;
 
-    public UserDto(UUID id, String username, String password, String email, String firstname, String lastname, String phone) {
+    public UserEntity() {
+    }
+
+    public UserEntity(UUID id, String username, String password, String email, String firstname, String lastname, String phone) {
         this.id = id;
         this.username = username;
         this.password = password;
