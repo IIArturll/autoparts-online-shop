@@ -1,18 +1,39 @@
-package com.autoparts.userservice.core.dto;
+package com.autoparts.userservice.entity;
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
-public class UserDto {
+@Entity
+@Table(name = "user")
+public class UserEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
     private UUID id;
+
     private String username;
     private String password;
     private String email;
+
     private String firstname;
     private String lastname;
+
     private String phone;
 
-    public UserDto(UUID id, String username, String password, String email, String firstname, String lastname, String phone) {
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public UserEntity() {
+    }
+
+    public UserEntity(UUID id, String username, String password, String email, String firstname, String lastname, String phone, Role role, Status status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -20,6 +41,8 @@ public class UserDto {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
+        this.role = role;
+        this.status = status;
     }
 
     public UUID getId() {
@@ -76,5 +99,21 @@ public class UserDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

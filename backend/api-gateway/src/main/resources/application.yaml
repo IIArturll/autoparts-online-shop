@@ -1,0 +1,23 @@
+
+spring:
+  application:
+    name: api-gateway
+
+
+  cloud:
+    config:
+      import-check:
+        enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service-route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/users/**
+
+
+server:
+  port: 8080
