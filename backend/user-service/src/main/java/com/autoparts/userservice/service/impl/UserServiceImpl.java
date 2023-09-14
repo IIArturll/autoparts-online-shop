@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto create(UserDto userDto) {
+    public UserEntity create(UserDto userDto) {
         if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("User already exist with email: " + userDto.getEmail());
         }
@@ -44,14 +44,14 @@ public class UserServiceImpl implements UserService {
         userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userEntity.setRole(role);
         userEntity.setStatus(status);
-        return null;
+        return userEntity;
     }
 
     @Override
-    public UserDto update(UUID id, UserDto userDto) {
+    public UserEntity update(UUID id, UserDto userDto) {
         UserEntity currentUser = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Can`t find user with UUID: " + id));
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -60,10 +60,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getById(UUID id) {
+    public UserEntity getById(UUID id) {
         UserEntity user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Can`t find user with UUID: " + id));
-
-        return null;
+        throw new UnsupportedOperationException();
     }
 }
