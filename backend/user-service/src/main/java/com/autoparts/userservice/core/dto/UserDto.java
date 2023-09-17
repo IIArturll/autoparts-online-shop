@@ -3,15 +3,13 @@ package com.autoparts.userservice.core.dto;
 import java.util.UUID;
 
 public class UserDto {
-    private UUID id;
 
+    private UUID id;
     private String username;
     private String password;
     private String email;
-
     private String firstname;
     private String lastname;
-
     private String phone;
 
     public UserDto(UUID id, String username, String password, String email, String firstname, String lastname, String phone) {

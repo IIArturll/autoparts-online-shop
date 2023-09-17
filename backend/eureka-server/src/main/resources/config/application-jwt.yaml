@@ -1,0 +1,4 @@
+
+jwt:
+  secret: vefbwgu43ei0ghy46uwfdWKGEH95WQ3KOR908FGXFAKWRAJ8THUNFE,DWjr8iomk
+  lifetime: 36000

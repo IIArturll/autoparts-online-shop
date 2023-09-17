@@ -20,6 +20,7 @@
         <eureka-client.version>4.0.3</eureka-client.version>
         <postgresql.version>42.6.0</postgresql.version>
         <jakarta-validation.version>3.0.2</jakarta-validation.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
     </properties>
 
     <dependencies>
@@ -60,6 +61,19 @@
             <artifactId>jakarta.validation-api</artifactId>
             <version>${jakarta-validation.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+
 
 
         <dependency>
