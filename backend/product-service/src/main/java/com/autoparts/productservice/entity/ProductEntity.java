@@ -19,7 +19,7 @@ public class ProductEntity {
     private CategoryEntity category;
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "brand")
+    @JoinColumn(name = "car_brand")
     private CarBrandEntity brand;
     @NotNull
     @NotBlank
