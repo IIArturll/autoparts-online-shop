@@ -9,7 +9,6 @@ import java.util.UUID;
 
 
 public class ProductDTO {
-    @NotNull
     private UUID id;
 
     @NotNull

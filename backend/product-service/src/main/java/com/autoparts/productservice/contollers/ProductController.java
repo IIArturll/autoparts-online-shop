@@ -30,8 +30,8 @@ public class ProductController {
         return ResponseEntity.status(200).body(service.getPage(pageable));
     }
 
-    @GetMapping("/card")
-    public ResponseEntity<ProductDTO> getCard(UUID uuid) {
+    @GetMapping("/card/{uuid}")
+    public ResponseEntity<ProductDTO> getCard(@PathVariable("uuid") UUID uuid) {
         return ResponseEntity.status(200).body(service.find(uuid));
     }
 }
