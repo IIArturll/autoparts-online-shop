@@ -16,17 +16,15 @@ import java.util.UUID;
 public class UserController {
 
     private final UserService userService;
-    private final UserEntityMapper userEntityMapper;
 
     @Autowired
-    public UserController(UserService userService, UserEntityMapper userEntityMapper) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.userEntityMapper = userEntityMapper;
     }
 
     @GetMapping("/{id}")
     public UserDto getById(@PathVariable UUID id) {
-        return userEntityMapper.toDto(userService.getById(id));
+        return userService.getById(id);
     }
 
     @DeleteMapping("/{id}")
