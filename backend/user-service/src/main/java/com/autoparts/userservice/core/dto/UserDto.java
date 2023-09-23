@@ -21,7 +21,7 @@ public class UserDto {
 
     @NotNull
     @NotBlank
-    @Pattern(regexp = "")
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
     private String email;
 
     @NotNull
@@ -34,6 +34,7 @@ public class UserDto {
 
     @NotNull
     @NotBlank
+    @Pattern(regexp = "")
     private String phone;
 
     public UserDto(UUID id, String username, String password, String email, String firstname, String lastname, String phone) {
