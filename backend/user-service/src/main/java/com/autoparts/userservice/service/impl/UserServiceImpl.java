@@ -7,7 +7,7 @@ import com.autoparts.userservice.core.mappers.UserEntityMapper;
 import com.autoparts.userservice.entity.Role;
 import com.autoparts.userservice.entity.Status;
 import com.autoparts.userservice.entity.UserEntity;
-import com.autoparts.userservice.repository.UserRepository;
+import com.autoparts.userservice.repository.IUserRepository;
 import com.autoparts.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,12 +18,12 @@ import java.util.UUID;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final IUserRepository userRepository;
     private final UserEntityMapper userEntityMapper;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository,
+    public UserServiceImpl(IUserRepository userRepository,
                            UserEntityMapper userEntityMapper,
                            PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;

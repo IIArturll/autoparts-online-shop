@@ -19,13 +19,13 @@ public class ProductController {
         this.service = productService;
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     public ResponseEntity<?> add(@Valid @RequestBody ProductDTO product) {
         service.add(product);
         return ResponseEntity.status(201).build();
     }
 
-    @GetMapping()
+    @GetMapping("/getPage")
     public ResponseEntity<Page<ProductDTO>> getPage(Pageable pageable) {
         return ResponseEntity.status(200).body(service.getPage(pageable));
     }
