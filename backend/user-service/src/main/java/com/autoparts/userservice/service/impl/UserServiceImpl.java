@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto create(UserDto userDto) {
+    public void create(UserDto userDto) {
         if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("User already exist with email: " + userDto.getEmail());
         }
@@ -46,7 +46,6 @@ public class UserServiceImpl implements UserService {
         user.setStatus(status);
 
         userRepository.save(user);
-        return userEntityMapper.toDto(user);
     }
 
     @Override
