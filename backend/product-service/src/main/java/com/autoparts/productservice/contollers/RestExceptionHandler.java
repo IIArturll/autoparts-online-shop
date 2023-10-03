@@ -17,12 +17,16 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleNoValidException(MethodArgumentNotValidException e){
+    public ResponseEntity<MultipleErrorResponse> handleNoValidException(MethodArgumentNotValidException e){
         MultipleErrorResponse errorResponse = new MultipleErrorResponse("Validation error");
         e.getBindingResult()
                 .getFieldErrors()
                 .forEach(fieldError -> errorResponse.add(new ErrorField(fieldError.getField(),
                         fieldError.getDefaultMessage())));
         return ResponseEntity.badRequest().body(errorResponse);
+    }
+    @ExceptionHandler(Throwable.class)
+    public ResponseEntity<?> handleOtherException(Throwable e){
+        return ResponseEntity.status(500).body(e.getMessage());
     }
 }
