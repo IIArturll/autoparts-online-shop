@@ -1,7 +1,7 @@
 package com.autoparts.productservice.services;
 
-import com.autoparts.productservice.core.ProductDTO;
-import com.autoparts.productservice.core.ProductMapper;
+
+import com.autoparts.productservice.core.exceptions.NotFoundException;
 import com.autoparts.productservice.entity.ProductEntity;
 import com.autoparts.productservice.repositories.IProductRepository;
 import com.autoparts.productservice.services.api.IProductServiceMicro;
@@ -22,6 +22,6 @@ public class ProductServiceMicro implements IProductServiceMicro {
     @Override
     public ProductEntity find(UUID uuid) {
         return repository.findById(uuid).orElseThrow(() ->
-                new RuntimeException("there is no product with this uuid"));
+                new NotFoundException("There is no product with this id : " + uuid));
     }
 }
