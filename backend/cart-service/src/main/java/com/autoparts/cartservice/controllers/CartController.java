@@ -1,10 +1,8 @@
 package com.autoparts.cartservice.controllers;
 
 import com.autoparts.cartservice.controllers.clients.IProductClient;
-import com.autoparts.cartservice.core.AddReq;
+import com.autoparts.cartservice.core.AddProductDTO;
 import com.autoparts.cartservice.core.CartDTO;
-import com.autoparts.cartservice.core.ProductDTO;
-import com.autoparts.cartservice.entity.product.ProductEntity;
 import com.autoparts.cartservice.services.CartService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +28,7 @@ public class CartController {
 
     // добавить в карзину продукт по productId для юзера по userId кол-во n
     @PostMapping()
-    public ResponseEntity<?> add(@RequestBody AddReq req) {
+    public ResponseEntity<?> add(@RequestBody AddProductDTO req) {
         //service.add(userId,productId,amount)
         return ResponseEntity.status(201).build();
     }
