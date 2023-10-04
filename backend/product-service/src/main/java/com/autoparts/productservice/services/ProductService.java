@@ -2,7 +2,7 @@ package com.autoparts.productservice.services;
 
 import com.autoparts.productservice.core.ProductDTO;
 import com.autoparts.productservice.core.ProductMapper;
-import com.autoparts.productservice.core.exceptions.NotFoundException;
+import com.autoparts.productservice.core.exceptions.ProductNotFoundException;
 import com.autoparts.productservice.entity.CarBrandEntity;
 import com.autoparts.productservice.entity.CategoryEntity;
 import com.autoparts.productservice.entity.ProductEntity;
@@ -36,7 +36,7 @@ public class ProductService implements IProductService {
     @Override
     public ProductDTO find(UUID uuid) {
         ProductEntity productEntity = repository.findById(uuid).orElseThrow(() ->
-                new NotFoundException("There is no product with this id : " + uuid));
+                new ProductNotFoundException("There is no product with this id : " + uuid));
         return ProductMapper.convertProductEntityToDTO(productEntity);
     }
 
