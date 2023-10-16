@@ -6,8 +6,8 @@ import com.autoparts.userservice.entity.UserEntity;
 import java.util.UUID;
 
 public interface UserService {
-    UserEntity create(UserDto userDto);
-    UserEntity update(UUID id, UserDto userDto);
+    void create(UserDto userDto);
+    UserDto update(UUID id, UserDto userDto);
     void delete(UUID id);
-    UserEntity getById(UUID id);
+    UserDto getById(UUID id);
 }

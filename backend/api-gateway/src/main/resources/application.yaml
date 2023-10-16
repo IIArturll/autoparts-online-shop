@@ -16,12 +16,14 @@ spring:
         - id: user-service-route
           uri: lb://user-service
           predicates:
-            - Path=/api/v1/users/**
+            - Path=/api/v1/user/**
         - id: product-service-route
           uri: lb://product-service
           predicates:
-            - Path=/api/v1/products/**
-
-
+            - Path=/api/v1/product/**
+        - id: cart-service-route
+          uri: lb://cart-service
+          predicates:
+            - Path=/api/v1/cart/**
 server:
   port: 8080

@@ -3,12 +3,14 @@ package com.autoparts.productservice.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
 @Table(schema = "autoparts_shop", name = "product")
 public class ProductEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @NotNull
     @NotBlank
@@ -28,6 +30,10 @@ public class ProductEntity {
     private Double price;
     @PositiveOrZero
     private Integer amount;
+
+    //todo
+    // может добавить поставщика для того что бы проверять на наличие такого товара уже в базе
+    // по тайтлу и поставщику и мб другим пораметрам
 
     public ProductEntity(UUID id, String title, CategoryEntity category,
                          CarBrandEntity brand, String description,

@@ -1,15 +1,40 @@
 package com.autoparts.userservice.core.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+
 import java.util.UUID;
 
 public class UserDto {
 
+    @NotNull
     private UUID id;
+
+    @NotNull
+    @NotBlank
     private String username;
+
+    @NotNull
+    @NotBlank
     private String password;
+
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
     private String email;
+
+    @NotNull
+    @NotBlank
     private String firstname;
+
+    @NotNull
+    @NotBlank
     private String lastname;
+
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "")
     private String phone;
 
     public UserDto(UUID id, String username, String password, String email, String firstname, String lastname, String phone) {

@@ -1,32 +1,32 @@
 package com.autoparts.userservice.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "user")
+@Table(schema = "autoparts_shop", name = "user")
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID id;
-
+    //todo добавить в таблицу username colum
     private String username;
     private String password;
     private String email;
 
+    @Column(name = "first_name")
     private String firstname;
+    @Column(name = "second_name")
     private String lastname;
-
+    //todo добавить в таблицу phone colum
     private String phone;
-
+    //todo Переделать роль, в базу запишет id а обратно вернуть роль по айди не сможет при select
     @Enumerated(EnumType.STRING)
     private Role role;
-
+    //todo Переделать статус, тоже самое что и с ролью
     @Enumerated(EnumType.STRING)
     private Status status;
 

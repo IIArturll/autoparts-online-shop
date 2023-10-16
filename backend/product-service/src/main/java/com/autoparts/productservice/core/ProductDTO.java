@@ -11,16 +11,12 @@ import java.util.UUID;
 public class ProductDTO {
     private UUID id;
 
-    @NotNull
     @NotBlank
     private String title;
-    @NotNull
     @NotBlank
     private String category;
-    @NotNull
     @NotBlank
     private String brand;
-    @NotNull
     @NotBlank
     private String description;
     @Positive
