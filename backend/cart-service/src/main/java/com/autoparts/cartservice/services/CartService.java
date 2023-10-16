@@ -1,7 +1,7 @@
 package com.autoparts.cartservice.services;
 
 import com.autoparts.cartservice.controllers.clients.IProductClient;
-import com.autoparts.cartservice.core.AddReq;
+import com.autoparts.cartservice.core.AddProductDTO;
 import com.autoparts.cartservice.core.CartDTO;
 import com.autoparts.cartservice.core.CartMapper;
 import com.autoparts.cartservice.core.ProductDTO;
@@ -32,9 +32,6 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public void add(AddReq req) {
-        ResponseEntity<ProductDTO> productDTO = productClient.getCard(req.productId());
-
-
+    public void add(AddProductDTO req) {
     }
 }
