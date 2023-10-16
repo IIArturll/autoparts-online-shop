@@ -22,11 +22,11 @@ CREATE TABLE autoparts_shop.user
     second_name TEXT NOT NULL,
     role SMALLINT NOT NULL,
     status SMALLINT NOT NULL,
-    phone_number CHAR[13] NOT NULL
+    phone_number CHAR[13] NOT NULL,
     password TEXT NOT NULL,
     CONSTRAINT uuid_user PRIMARY KEY (id),
     FOREIGN KEY (role)
-        REFERENCES fitness.user_role (id),
+        REFERENCES autoparts_shop.user_role (id),
     FOREIGN KEY (status)
-        REFERENCES fitness.user_status (id)
+        REFERENCES autoparts_shop.user_status (id)
 );
