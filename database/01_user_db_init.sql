@@ -22,6 +22,7 @@ CREATE TABLE autoparts_shop.user
     second_name TEXT NOT NULL,
     role SMALLINT NOT NULL,
     status SMALLINT NOT NULL,
+    phone_number CHAR[13] NOT NULL
     password TEXT NOT NULL,
     CONSTRAINT uuid_user PRIMARY KEY (id),
     FOREIGN KEY (role)
