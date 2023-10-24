@@ -1,5 +1,7 @@
 package com.autoparts.userservice.entity;
 
+import com.autoparts.userservice.core.dto.Role;
+import com.autoparts.userservice.core.dto.Status;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -12,8 +14,6 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID id;
-    //todo добавить в таблицу username colum
-    private String username;
     private String password;
     private String email;
 
@@ -21,21 +21,23 @@ public class UserEntity {
     private String firstname;
     @Column(name = "second_name")
     private String lastname;
-    //todo добавить в таблицу phone colum
+    @Column(name = "phone_number")
     private String phone;
-    //todo Переделать роль, в базу запишет id а обратно вернуть роль по айди не сможет при select
-    @Enumerated(EnumType.STRING)
-    private Role role;
-    //todo Переделать статус, тоже самое что и с ролью
-    @Enumerated(EnumType.STRING)
-    private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "role")
+    private RoleEntity role;
+
+    @ManyToOne
+    @JoinColumn(name = "status")
+    private StatusEntity status;
 
     public UserEntity() {
     }
 
-    public UserEntity(UUID id, String username, String password, String email, String firstname, String lastname, String phone, Role role, Status status) {
+    public UserEntity(UUID id, String password, String email, String firstname, String lastname, String phone,
+                      RoleEntity role, StatusEntity status) {
         this.id = id;
-        this.username = username;
         this.password = password;
         this.email = email;
         this.firstname = firstname;
@@ -51,14 +53,6 @@ public class UserEntity {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -101,19 +95,19 @@ public class UserEntity {
         this.phone = phone;
     }
 
-    public Role getRole() {
+    public RoleEntity getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(RoleEntity role) {
         this.role = role;
     }
 
-    public Status getStatus() {
+    public StatusEntity getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(StatusEntity status) {
         this.status = status;
     }
 }
