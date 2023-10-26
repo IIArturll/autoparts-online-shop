@@ -1,13 +1,13 @@
 package com.autoparts.productservice.services;
 
 
-import com.autoparts.productservice.core.exceptions.ProductNotFoundException;
 import com.autoparts.productservice.entity.ProductEntity;
 import com.autoparts.productservice.repositories.IProductRepository;
 import com.autoparts.productservice.services.api.IProductServiceMicro;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -20,8 +20,7 @@ public class ProductServiceMicro implements IProductServiceMicro {
     }
 
     @Override
-    public ProductEntity find(UUID uuid) {
-        return repository.findById(uuid).orElseThrow(() ->
-                new ProductNotFoundException("There is no product with this id : " + uuid));
+    public Optional<ProductEntity> find(UUID uuid) {
+        return repository.findById(uuid);
     }
 }
