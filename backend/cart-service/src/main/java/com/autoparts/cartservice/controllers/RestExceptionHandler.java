@@ -1,4 +1,4 @@
-package com.autoparts.cartservice.controllers.clients;
+package com.autoparts.cartservice.controllers;
 
 
 import com.autoparts.cartservice.core.exceptions.ErrorField;
