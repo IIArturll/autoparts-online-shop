@@ -1,10 +1,7 @@
 package com.autoparts.cartservice.controllers;
 
 
-import com.autoparts.cartservice.core.exceptions.ErrorField;
-import com.autoparts.cartservice.core.exceptions.MultipleErrorResponse;
-import com.autoparts.cartservice.core.exceptions.ProductNotFoundException;
-import com.autoparts.cartservice.core.exceptions.UserNotFoundException;
+import com.autoparts.cartservice.core.exceptions.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,6 +18,10 @@ public class RestExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<UserNotFoundException> handleNotFoundException(UserNotFoundException e){
         return ResponseEntity.status(404).body(e);
+    }
+    @ExceptionHandler(InsufficientQuantityException.class)
+    public ResponseEntity<InsufficientQuantityException> handleInsufficientQuantityException(InsufficientQuantityException e){
+        return ResponseEntity.status(400).body(e);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
