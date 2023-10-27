@@ -1,41 +1,41 @@
 package com.autoparts.cartservice.entity.user;
 
-import com.autoparts.cartservice.entity.user.Role;
-import com.autoparts.cartservice.entity.user.Status;
 import jakarta.persistence.*;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "user")
+@Table(schema = "autoparts_shop", name = "user")
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID id;
-
-    private String username;
     private String password;
     private String email;
 
+    @Column(name = "first_name")
     private String firstname;
+    @Column(name = "second_name")
     private String lastname;
-
+    @Column(name = "phone_number")
     private String phone;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @ManyToOne
+    @JoinColumn(name = "role")
+    private RoleEntity role;
 
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    @ManyToOne
+    @JoinColumn(name = "status")
+    private StatusEntity status;
 
     public UserEntity() {
     }
 
-    public UserEntity(UUID id, String username, String password, String email, String firstname, String lastname, String phone, Role role, Status status) {
+    public UserEntity(UUID id, String password, String email, String firstname, String lastname, String phone,
+                      RoleEntity role, StatusEntity status) {
         this.id = id;
-        this.username = username;
         this.password = password;
         this.email = email;
         this.firstname = firstname;
@@ -51,14 +51,6 @@ public class UserEntity {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -101,19 +93,19 @@ public class UserEntity {
         this.phone = phone;
     }
 
-    public Role getRole() {
+    public RoleEntity getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(RoleEntity role) {
         this.role = role;
     }
 
-    public Status getStatus() {
+    public StatusEntity getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(StatusEntity status) {
         this.status = status;
     }
 }
