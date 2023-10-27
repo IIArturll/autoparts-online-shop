@@ -1,7 +1,6 @@
 package com.autoparts.productservice.services.api;
 
 import com.autoparts.productservice.core.ProductDTO;
-import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,4 +12,6 @@ public interface IProductService {
     Page<ProductDTO> getPage(Pageable pageable);
 
     void add(ProductDTO product);
+
+    void increaseAmount(UUID id, Integer amount);
 }

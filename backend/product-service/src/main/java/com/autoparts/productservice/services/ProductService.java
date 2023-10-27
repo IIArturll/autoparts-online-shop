@@ -61,4 +61,12 @@ public class ProductService implements IProductService {
         entity.setBrand(brand);
         repository.save(entity);
     }
+
+    @Override
+    public void increaseAmount(UUID id, Integer amount) {
+        ProductEntity entity = repository.findById(id)
+                .orElseThrow(()->new ProductNotFoundException("Product with id:"+id+" not found"));
+        entity.setAmount(entity.getAmount()+amount);
+        repository.save(entity);
+    }
 }

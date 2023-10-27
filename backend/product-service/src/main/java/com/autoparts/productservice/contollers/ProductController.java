@@ -3,6 +3,7 @@ package com.autoparts.productservice.contollers;
 import com.autoparts.productservice.core.ProductDTO;
 import com.autoparts.productservice.services.api.IProductService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -34,4 +35,12 @@ public class ProductController {
     public ResponseEntity<ProductDTO> getCard(@PathVariable("uuid") UUID uuid) {
         return ResponseEntity.status(200).body(service.find(uuid));
     }
+
+    @PutMapping("/cart/{id}/{amount}")
+    public ResponseEntity<?> increaseAmount(@PathVariable("id") UUID id,
+                                            @PathVariable("amount") @Positive Integer amount){
+        service.increaseAmount(id,amount);
+        return ResponseEntity.status(201).build();
+    }
+
 }
