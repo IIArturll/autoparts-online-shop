@@ -15,7 +15,7 @@ export class Items extends Component {
 					/>
 				))}
 			</main>
-		)
+		)	
 	}
 }
 
