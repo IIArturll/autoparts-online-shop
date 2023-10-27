@@ -36,11 +36,11 @@ public class ProductController {
         return ResponseEntity.status(200).body(service.find(uuid));
     }
 
-    @PutMapping("/cart/{id}/{amount}")
+    @PutMapping("item/{id}/quantity/{amount}")
     public ResponseEntity<?> increaseAmount(@PathVariable("id") UUID id,
                                             @PathVariable("amount") @Positive Integer amount){
         service.increaseAmount(id,amount);
-        return ResponseEntity.status(201).build();
+        return ResponseEntity.status(200).build();
     }
 
 }
