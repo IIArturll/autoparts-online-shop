@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS autoparts_shop.product
 	category SMALLINT NOT NULL,
 	car_brand SMALLINT NOT NULL,
 	description TEXT NOT NULL,
+    manufacturer TEXT NOT NULL,
+    imgUrl Text,
 	price DECIMAL NOT NULL,
 	amount INT NOT NULL,
 	CONSTRAINT uuid_product PRIMARY KEY (id),

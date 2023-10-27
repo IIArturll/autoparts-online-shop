@@ -26,14 +26,13 @@ public class ProductEntity {
     @NotNull
     @NotBlank
     private String description;
+    @NotBlank
+    private String manufacturer;
+    private String imgUrl;
     @Positive
     private Double price;
     @PositiveOrZero
     private Integer amount;
-
-    //todo
-    // может добавить поставщика для того что бы проверять на наличие такого товара уже в базе
-    // по тайтлу и поставщику и мб другим пораметрам
 
     public ProductEntity(UUID id, String title, CategoryEntity category,
                          CarBrandEntity brand, String description,
@@ -53,11 +52,14 @@ public class ProductEntity {
 
     public ProductEntity(String title, CategoryEntity category,
                          CarBrandEntity brand, String description,
+                         String manufacturer, String imgUrl,
                          Double price, Integer amount) {
         this.title = title;
         this.category = category;
         this.brand = brand;
         this.description = description;
+        this.manufacturer = manufacturer;
+        this.imgUrl = imgUrl;
         this.price = price;
         this.amount = amount;
     }
@@ -100,6 +102,22 @@ public class ProductEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public Double getPrice() {
