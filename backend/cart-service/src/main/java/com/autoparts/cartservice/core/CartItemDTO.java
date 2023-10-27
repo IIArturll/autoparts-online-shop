@@ -1,23 +1,23 @@
 package com.autoparts.cartservice.core;
 
 public class CartItemDTO {
-    private ProductDTO productDTO;
+    private ProductDTO product;
     private Integer amount;
 
     public CartItemDTO() {
     }
 
     public CartItemDTO(ProductDTO productDTO, Integer amount) {
-        this.productDTO = productDTO;
+        this.product = productDTO;
         this.amount = amount;
     }
 
-    public ProductDTO getProductDTO() {
-        return productDTO;
+    public ProductDTO getProduct() {
+        return product;
     }
 
-    public void setProductDTO(ProductDTO productDTO) {
-        this.productDTO = productDTO;
+    public void setProduct(ProductDTO product) {
+        this.product = product;
     }
 
     public Integer getAmount() {

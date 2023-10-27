@@ -1,9 +1,13 @@
 package com.autoparts.cartservice.core;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.util.List;
 import java.util.UUID;
-
+@JsonPropertyOrder({"cart_id","user_id","products"})
 public class CartDTO {
+    @JsonProperty("cart_id")
     private UUID id;
     private UUID user_id;
     private List<CartItemDTO> products;
