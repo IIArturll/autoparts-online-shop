@@ -3,6 +3,7 @@ package com.autoparts.productservice.services;
 import com.autoparts.productservice.core.ProductDTO;
 import com.autoparts.productservice.core.ProductMapper;
 import com.autoparts.productservice.core.exceptions.ProductNotFoundException;
+import com.autoparts.productservice.core.exceptions.ResourceAlreadyExist;
 import com.autoparts.productservice.entity.CarBrandEntity;
 import com.autoparts.productservice.entity.CategoryEntity;
 import com.autoparts.productservice.entity.ProductEntity;
@@ -47,8 +48,6 @@ public class ProductService implements IProductService {
 
     @Override
     public void add(ProductDTO product) {
-        //todo проверить на наличие товара
-        ProductEntity entity = ProductMapper.convertProductDTOToEntity(product);
         CategoryEntity category = categoryService.find(product.getCategory());
         if (category == null) {
             category = categoryService.add(product.getCategory());
@@ -57,6 +56,14 @@ public class ProductService implements IProductService {
         if (brand == null) {
             brand = brandService.add(product.getBrand());
         }
+        ProductEntity existProduct = repository.findByTitleAndCategoryAndBrandAndDescriptionAndManufacturerAndPrice(
+                product.getTitle(), category,
+                brand, product.getDescription(),
+                product.getManufacturer(), product.getPrice()
+        ).orElse(null);
+        if(existProduct!=null)
+            throw new ResourceAlreadyExist("Product with this parameters already exist, with id "+existProduct.getId());
+        ProductEntity entity = ProductMapper.convertProductDTOToEntity(product);
         entity.setCategory(category);
         entity.setBrand(brand);
         repository.save(entity);
