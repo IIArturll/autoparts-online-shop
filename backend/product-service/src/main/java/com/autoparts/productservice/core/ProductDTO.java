@@ -20,7 +20,7 @@ public class ProductDTO {
     private String description;
     @NotBlank
     private String manufacturer;
-    private String url;
+    private String imgUrl;
     @Positive
     private Double price;
     @PositiveOrZero
@@ -41,7 +41,7 @@ public class ProductDTO {
         this.brand = brand;
         this.description = description;
         this.manufacturer = manufacturer;
-        this.url = url;
+        this.imgUrl = url;
         this.price = price;
         this.amount = amount;
     }
@@ -91,11 +91,11 @@ public class ProductDTO {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
-    public String getUrl() {
-        return url;
+    public String getImgUrl() {
+        return imgUrl;
     }
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
     public Double getPrice() {
         return price;

@@ -14,6 +14,6 @@ public class ProductMapper {
     public static ProductEntity convertProductDTOToEntity(ProductDTO dto){
         return new ProductEntity(dto.getTitle(),new CategoryEntity(dto.getCategory()),
                 new CarBrandEntity(dto.getBrand()),dto.getDescription(), dto.getManufacturer(),
-                dto.getUrl(), dto.getPrice(), dto.getAmount());
+                dto.getImgUrl(), dto.getPrice(), dto.getAmount());
     }
 }

@@ -16,11 +16,11 @@ public class ProductEntity {
     @NotBlank
     private String title;
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category")
     private CategoryEntity category;
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "car_brand")
     private CarBrandEntity brand;
     @NotNull
@@ -28,6 +28,7 @@ public class ProductEntity {
     private String description;
     @NotBlank
     private String manufacturer;
+    @Column(name = "img_url")
     private String imgUrl;
     @Positive
     private Double price;
