@@ -3,7 +3,6 @@ package com.autoparts.productservice.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -26,8 +25,10 @@ public class ProductEntity {
     @NotNull
     @NotBlank
     private String description;
-    @NotBlank
-    private String manufacturer;
+    @NotNull
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "manufacturer")
+    private ManufacturerEntity manufacturer;
     @Column(name = "img_url")
     private String imgUrl;
     @Positive
@@ -53,7 +54,7 @@ public class ProductEntity {
 
     public ProductEntity(String title, CategoryEntity category,
                          CarBrandEntity brand, String description,
-                         String manufacturer, String imgUrl,
+                         ManufacturerEntity manufacturer, String imgUrl,
                          Double price, Integer amount) {
         this.title = title;
         this.category = category;
@@ -105,11 +106,11 @@ public class ProductEntity {
         this.description = description;
     }
 
-    public String getManufacturer() {
+    public ManufacturerEntity getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public void setManufacturer(ManufacturerEntity manufacturer) {
         this.manufacturer = manufacturer;
     }
 

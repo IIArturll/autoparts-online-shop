@@ -2,6 +2,7 @@ package com.autoparts.productservice.repositories;
 
 import com.autoparts.productservice.entity.CarBrandEntity;
 import com.autoparts.productservice.entity.CategoryEntity;
+import com.autoparts.productservice.entity.ManufacturerEntity;
 import com.autoparts.productservice.entity.ProductEntity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,7 +25,7 @@ public interface IProductRepository extends CrudRepository<ProductEntity, UUID>,
                                                                                                 @NotNull CategoryEntity category,
                                                                                                 @NotNull CarBrandEntity brand,
                                                                                                 @NotNull @NotBlank String description,
-                                                                                                @NotBlank String manufacturer,
+                                                                                                @NotNull ManufacturerEntity manufacturer,
                                                                                                 @Positive Double price);
 
     default Page<ProductEntity> findProductsByFilters(String title, CarBrandEntity brand,
