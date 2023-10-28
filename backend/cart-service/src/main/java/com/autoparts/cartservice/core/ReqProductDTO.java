@@ -5,4 +5,4 @@ import jakarta.validation.constraints.Positive;
 
 import java.util.UUID;
 
-public record AddProductDTO(@NotNull UUID userId, @NotNull UUID productId, @Positive Integer amount){}
+public record ReqProductDTO(@NotNull UUID userId, @NotNull UUID productId, @Positive Integer amount){}
