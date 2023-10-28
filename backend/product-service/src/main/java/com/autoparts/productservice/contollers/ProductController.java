@@ -43,4 +43,9 @@ public class ProductController {
         return ResponseEntity.status(200).build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id){
+        service.delete(id);
+        return ResponseEntity.status(204).build();
+    }
 }

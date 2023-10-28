@@ -76,4 +76,11 @@ public class ProductService implements IProductService {
         entity.setAmount(entity.getAmount()+amount);
         repository.save(entity);
     }
+
+    @Override
+    public void delete(UUID id) {
+        ProductEntity entity = repository.findById(id)
+                .orElseThrow(()->new ProductNotFoundException("Product with id:"+id+" not found"));
+        repository.delete(entity);
+    }
 }

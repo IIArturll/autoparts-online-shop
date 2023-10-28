@@ -14,4 +14,6 @@ public interface IProductService {
     void add(ProductDTO product);
 
     void increaseAmount(UUID id, Integer amount);
+
+    void delete(UUID id);
 }
