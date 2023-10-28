@@ -29,6 +29,7 @@ public class CartEntity {
 
     public CartEntity(UserEntity user) {
         this.user = user;
+        this.products=new ArrayList<>();
     }
 
     public CartEntity(UUID id, UserEntity user, List<CartItemEntity> products) {

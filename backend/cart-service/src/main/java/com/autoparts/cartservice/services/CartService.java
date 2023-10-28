@@ -40,7 +40,10 @@ public class CartService implements ICartService {
     public CartDTO get(UUID user) {
         UserEntity userEntity = userClient.get(user).getBody()
                 .orElseThrow(() -> new UserNotFoundException("User with id: " + user + ", not found"));
-        CartEntity cartEntity = repository.findByUserId(user).orElseGet(() -> new CartEntity(userEntity));
+        CartEntity cartEntity = repository.findByUserId(user).orElseGet(() -> {
+            CartEntity entity = new CartEntity(userEntity);
+            return repository.save(entity);
+        });
         return CartMapper.convertCartEntityToDTO(cartEntity);
     }
 
