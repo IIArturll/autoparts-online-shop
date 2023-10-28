@@ -1,6 +1,7 @@
 package com.autoparts.productservice.contollers;
 
 import com.autoparts.productservice.core.ProductDTO;
+import com.autoparts.productservice.core.SearchSpecificationDTO;
 import com.autoparts.productservice.services.api.IProductService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
@@ -27,8 +28,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductDTO>> getPage(Pageable pageable) {
-        return ResponseEntity.status(200).body(service.getPage(pageable));
+    public ResponseEntity<Page<ProductDTO>> getPage(Pageable pageable,
+                                                    @RequestBody SearchSpecificationDTO specification) {
+        return ResponseEntity.status(200).body(service.getPage(pageable,specification));
     }
 
     @GetMapping("/card/{uuid}")

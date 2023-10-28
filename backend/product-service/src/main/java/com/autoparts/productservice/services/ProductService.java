@@ -2,6 +2,7 @@ package com.autoparts.productservice.services;
 
 import com.autoparts.productservice.core.ProductDTO;
 import com.autoparts.productservice.core.ProductMapper;
+import com.autoparts.productservice.core.SearchSpecificationDTO;
 import com.autoparts.productservice.core.exceptions.ProductNotFoundException;
 import com.autoparts.productservice.core.exceptions.ResourceAlreadyExist;
 import com.autoparts.productservice.entity.CarBrandEntity;
@@ -42,8 +43,23 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Page<ProductDTO> getPage(Pageable pageable) {
-        return repository.findAll(pageable).map(ProductMapper::convertProductEntityToDTO);
+    public Page<ProductDTO> getPage(Pageable pageable, SearchSpecificationDTO specification) {
+        CategoryEntity category = null;
+        if (specification.category() != null && !specification.category().isEmpty()) {
+            category = categoryService.find(specification.category());
+            if (category == null) {
+                category = categoryService.add(specification.category());
+            }
+        }
+        CarBrandEntity brand = null;
+        if (specification.brand() != null && !specification.brand().isEmpty()) {
+            brand = brandService.find(specification.brand());
+            if (brand == null) {
+                brand = brandService.add(specification.brand());
+            }
+        }
+        return repository.findProductsByFilters(specification.title(), brand, category, pageable)
+                .map(ProductMapper::convertProductEntityToDTO);
     }
 
     @Override
@@ -61,8 +77,8 @@ public class ProductService implements IProductService {
                 brand, product.getDescription(),
                 product.getManufacturer(), product.getPrice()
         ).orElse(null);
-        if(existProduct!=null)
-            throw new ResourceAlreadyExist("Product with this parameters already exist, with id "+existProduct.getId());
+        if (existProduct != null)
+            throw new ResourceAlreadyExist("Product with this parameters already exist, with id " + existProduct.getId());
         ProductEntity entity = ProductMapper.convertProductDTOToEntity(product);
         entity.setCategory(category);
         entity.setBrand(brand);
@@ -72,15 +88,15 @@ public class ProductService implements IProductService {
     @Override
     public void increaseAmount(UUID id, Integer amount) {
         ProductEntity entity = repository.findById(id)
-                .orElseThrow(()->new ProductNotFoundException("Product with id:"+id+" not found"));
-        entity.setAmount(entity.getAmount()+amount);
+                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + id + " not found"));
+        entity.setAmount(entity.getAmount() + amount);
         repository.save(entity);
     }
 
     @Override
     public void delete(UUID id) {
         ProductEntity entity = repository.findById(id)
-                .orElseThrow(()->new ProductNotFoundException("Product with id:"+id+" not found"));
+                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + id + " not found"));
         repository.delete(entity);
     }
 }
