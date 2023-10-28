@@ -10,15 +10,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class RestExceptionHandler {
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ProductNotFoundException> handleNotFoundException(ProductNotFoundException e){
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ResourceNotFoundException> handleNotFoundException(ResourceNotFoundException e){
         return ResponseEntity.status(404).body(e);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<UserNotFoundException> handleNotFoundException(UserNotFoundException e){
-        return ResponseEntity.status(404).body(e);
-    }
     @ExceptionHandler(InsufficientQuantityException.class)
     public ResponseEntity<InsufficientQuantityException> handleInsufficientQuantityException(InsufficientQuantityException e){
         return ResponseEntity.status(400).body(e);
