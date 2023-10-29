@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -20,7 +21,7 @@ public class ProductControllerMicro {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductEntity> getCard(@PathVariable UUID id){
+    public ResponseEntity<Optional<ProductEntity>> getCard(@PathVariable UUID id){
         return ResponseEntity.status(200).body(service.find(id));
     }
 }

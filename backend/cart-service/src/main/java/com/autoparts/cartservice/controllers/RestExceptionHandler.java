@@ -1,8 +1,7 @@
-package com.autoparts.productservice.contollers;
+package com.autoparts.cartservice.controllers;
 
-import com.autoparts.productservice.core.exceptions.ErrorField;
-import com.autoparts.productservice.core.exceptions.MultipleErrorResponse;
-import com.autoparts.productservice.core.exceptions.ProductNotFoundException;
+
+import com.autoparts.cartservice.core.exceptions.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,6 +15,15 @@ public class RestExceptionHandler {
         return ResponseEntity.status(404).body(e);
     }
 
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<UserNotFoundException> handleNotFoundException(UserNotFoundException e){
+        return ResponseEntity.status(404).body(e);
+    }
+    @ExceptionHandler(InsufficientQuantityException.class)
+    public ResponseEntity<InsufficientQuantityException> handleInsufficientQuantityException(InsufficientQuantityException e){
+        return ResponseEntity.status(400).body(e);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<MultipleErrorResponse> handleNoValidException(MethodArgumentNotValidException e){
         MultipleErrorResponse errorResponse = new MultipleErrorResponse("Validation error");
@@ -25,6 +33,7 @@ public class RestExceptionHandler {
                         fieldError.getDefaultMessage())));
         return ResponseEntity.badRequest().body(errorResponse);
     }
+
     @ExceptionHandler(Throwable.class)
     public ResponseEntity<?> handleOtherException(Throwable e){
         return ResponseEntity.status(500).body(e.getMessage());

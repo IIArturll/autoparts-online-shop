@@ -4,8 +4,10 @@ import com.autoparts.userservice.core.dto.UserDto;
 import com.autoparts.userservice.core.exceptions.ResourceNotFoundException;
 import com.autoparts.userservice.core.exceptions.UserAlreadyExistsException;
 import com.autoparts.userservice.core.mappers.UserEntityMapper;
-import com.autoparts.userservice.entity.Role;
-import com.autoparts.userservice.entity.Status;
+import com.autoparts.userservice.core.dto.Role;
+import com.autoparts.userservice.core.dto.Status;
+import com.autoparts.userservice.entity.RoleEntity;
+import com.autoparts.userservice.entity.StatusEntity;
 import com.autoparts.userservice.entity.UserEntity;
 import com.autoparts.userservice.repository.IUserRepository;
 import com.autoparts.userservice.service.UserService;
@@ -42,8 +44,8 @@ public class UserServiceImpl implements UserService {
         Status status = Status.WAITING_ACTIVATION;
 
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setRole(role);
-        user.setStatus(status);
+        user.setRole(new RoleEntity(role));
+        user.setStatus(new StatusEntity(status));
 
         userRepository.save(user);
     }
