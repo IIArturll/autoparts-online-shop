@@ -1,0 +1,98 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="0783ab3e-0a74-02c8-0abd-f7b4e66b4bec">
+        <mxGraphModel dx="3186" dy="1584" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="32" value="Docker контейнер" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fillStyle=auto;fontSize=32;fontColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="-100" y="450" width="1300" height="670" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Сервер" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fillStyle=auto;fontSize=32;fontColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="-70" y="510" width="1210" height="550" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Backend" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;" parent="1" vertex="1">
+                    <mxGeometry x="-10" y="570" width="660" height="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=205;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;fontSize=32;fontColor=default;endArrow=none;endFill=0;endSize=6;" parent="1" source="18" target="19" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=236.22;exitDy=201.85;exitPerimeter=0;entryX=0;entryY=0;entryDx=340;entryDy=1300;entryPerimeter=0;strokeWidth=2;endArrow=none;endFill=0;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-488.1500000000001" y="673.2199999999998" as="sourcePoint"/>
+                        <mxPoint x="-100" y="795" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-488" y="795"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="Браузер пользователя" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fillStyle=auto;fontSize=32;fontColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="-680" y="432" width="393.7" height="236.22" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;fontSize=32;fontColor=default;endArrow=none;endFill=0;endSize=6;startArrow=none;" parent="1" source="25" target="22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="«component»&lt;br&gt;&lt;b&gt;GUI пользователя&lt;/b&gt;" style="html=1;dropTarget=0;fillStyle=auto;fontSize=32;fontColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="-690" y="50" width="393.7" height="236.22" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="shape=module;jettyWidth=8;jettyHeight=4;fillStyle=auto;fontSize=32;fontColor=default;" parent="19" vertex="1">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=3;fontSize=8;fontColor=default;endArrow=none;endFill=0;endSize=6;entryX=0;entryY=0.795;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1" target="32">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="168.8499999999999" y="286.22" as="sourcePoint"/>
+                        <mxPoint x="162" y="452" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="«component»&lt;br&gt;&lt;b&gt;JSX компоненты&lt;/b&gt;" style="html=1;dropTarget=0;fillStyle=auto;fontSize=32;fontColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="50" width="393.7" height="236.22" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="" style="shape=module;jettyWidth=8;jettyHeight=4;fillStyle=auto;fontSize=32;fontColor=default;" parent="22" vertex="1">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;fontSize=32;fontColor=default;endArrow=none;endFill=0;endSize=6;" parent="1" source="19" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-296.3000000000002" y="168.11000000000013" as="sourcePoint"/>
+                        <mxPoint x="-30" y="168.11000000000013" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="" style="shape=providedRequiredInterface;html=1;verticalLabelPosition=bottom;sketch=0;fillStyle=auto;fontSize=32;fontColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="-180" y="149.11" width="39.37" height="39.37" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="group;fontSize=10;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry y="670" width="630" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="User Service" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;fontColor=default;horizontal=1;fillStyle=auto;perimeterSpacing=0;" parent="29" vertex="1">
+                    <mxGeometry x="424.9" width="205.1" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Auth Service" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;fontColor=default;horizontal=1;fillStyle=auto;perimeterSpacing=0;" parent="29" vertex="1">
+                    <mxGeometry width="212.4487645129337" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="API gateway" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;fontColor=default;horizontal=1;fillStyle=auto;perimeterSpacing=0;" parent="29" vertex="1">
+                    <mxGeometry x="222.11980174967465" width="202.34359284436198" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="group" parent="29" vertex="1" connectable="0">
+                    <mxGeometry y="130" width="628.109390733891" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Product Service" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;fontColor=default;horizontal=1;fillStyle=auto;perimeterSpacing=0;" parent="10" vertex="1">
+                    <mxGeometry x="212.62518678552962" width="203.4360307119681" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Cart Service" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;fontColor=default;horizontal=1;fillStyle=auto;perimeterSpacing=0;" parent="10" vertex="1">
+                    <mxGeometry width="203.4360307119681" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Eureka Server" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;fontColor=default;horizontal=1;fillStyle=auto;perimeterSpacing=0;" parent="10" vertex="1">
+                    <mxGeometry x="424.6733600219228" width="203.4360307119681" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Frontend" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="570" width="450" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="PostgreSQL database" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;fontSize=32;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="790" width="450" height="210" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

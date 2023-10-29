@@ -9,6 +9,7 @@ import java.util.UUID;
 @Table(name = "cart_item",schema = "autoparts_shop")
 public class CartItemEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @ManyToOne()
     @JoinColumn(name = "product_id")
@@ -16,7 +17,6 @@ public class CartItemEntity {
     private Integer amount;
 
     public CartItemEntity() {
-
     }
 
     public CartItemEntity(ProductEntity product, Integer amount) {

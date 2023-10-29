@@ -1,16 +1,16 @@
 <mxfile host="65bd71144e">
     <diagram id="xpho2VCWKSWyDQS0Zhtr" name="Page-1">
-        <mxGraphModel dx="198" dy="135" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1168" dy="402" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="Посетитель&lt;br style=&quot;font-size: 10px;&quot;&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
+                <mxCell id="2" value="Посетитель&lt;br style=&quot;font-size: 10px;&quot;&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="1030" y="60" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="Зарегистрироваться" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
+                <mxCell id="3" value="Зарегистрироваться" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="780" y="170" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="" style="endArrow=none;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;startArrow=blockThin;startFill=1;fontSize=10;fontFamily=JetBrains Mono;" edge="1" parent="1" source="3">
+                <mxCell id="6" value="" style="endArrow=none;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;startArrow=blockThin;startFill=1;fontSize=10;fontFamily=JetBrains Mono;" parent="1" source="3" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="870" y="180" as="sourcePoint"/>
                         <mxPoint x="1020" y="110" as="targetPoint"/>
@@ -19,16 +19,16 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="7" value="Пользователь" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
+                <mxCell id="7" value="Пользователь" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="510" y="60" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="" style="endArrow=none;html=1;fontFamily=JetBrains Mono;startArrow=block;startFill=0;fontSize=10;" edge="1" parent="1">
+                <mxCell id="8" value="" style="endArrow=none;html=1;fontFamily=JetBrains Mono;startArrow=block;startFill=0;fontSize=10;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="560" y="90" as="sourcePoint"/>
                         <mxPoint x="1020" y="90" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="10" value="" style="endArrow=none;html=1;fontFamily=JetBrains Mono;exitX=0;exitY=0;exitDx=0;exitDy=0;startArrow=blockThin;startFill=1;fontSize=10;" edge="1" parent="1" source="3">
+                <mxCell id="10" value="" style="endArrow=none;html=1;fontFamily=JetBrains Mono;exitX=0;exitY=0;exitDx=0;exitDy=0;startArrow=blockThin;startFill=1;fontSize=10;" parent="1" source="3" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="790" y="250" as="sourcePoint"/>
                         <mxPoint x="560" y="110" as="targetPoint"/>
@@ -37,7 +37,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="14" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;fontSize=10;" edge="1" parent="1" source="12">
+                <mxCell id="14" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;fontSize=10;" parent="1" source="12" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="570" y="140" as="targetPoint"/>
                         <Array as="points">
@@ -45,13 +45,13 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="12" value="Войти как посетитель" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
+                <mxCell id="12" value="Войти как посетитель" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="560" y="200" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="Войти в свою учётную запись" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
+                <mxCell id="13" value="Войти в свою учётную запись" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="380" y="200" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;fontSize=10;" edge="1" parent="1">
+                <mxCell id="15" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;fontSize=10;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="480" y="140" as="targetPoint"/>
                         <mxPoint x="450" y="200" as="sourcePoint"/>
@@ -60,12 +60,12 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="24" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="16">
+                <mxCell id="24" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="16" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1044.9245283018868" y="140" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="41" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="16">
+                <mxCell id="41" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="16" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="400" y="460" as="targetPoint"/>
                         <Array as="points">
@@ -75,13 +75,13 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="16" value="Просмотреть каталог товаров" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
+                <mxCell id="16" value="Просмотреть каталог товаров" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="1010" y="310" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="Зарегистрированный&lt;br&gt;&amp;nbsp;пользователь" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
+                <mxCell id="17" value="Зарегистрированный&lt;br&gt;&amp;nbsp;пользователь" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="310" y="414" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="" style="endArrow=block;html=1;fontFamily=JetBrains Mono;fontSize=10;startArrow=none;startFill=0;endFill=0;" edge="1" parent="1">
+                <mxCell id="19" value="" style="endArrow=block;html=1;fontFamily=JetBrains Mono;fontSize=10;startArrow=none;startFill=0;endFill=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="330" y="400" as="sourcePoint"/>
                         <mxPoint x="500" y="90" as="targetPoint"/>
@@ -90,38 +90,38 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="23" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="22">
+                <mxCell id="23" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="22" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="330" y="520" as="targetPoint"/>
                         <mxPoint x="319.77" y="600.0000000000001" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="22" value="Выйти из учётной записи&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
-                    <mxGeometry x="410" y="670" width="140" height="50" as="geometry"/>
+                <mxCell id="22" value="Выйти из учётной записи&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="600" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="25">
+                <mxCell id="28" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="25" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="370" y="520" as="targetPoint"/>
                         <Array as="points"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="25" value="Добавить товар в корзину" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
-                    <mxGeometry x="510" y="600" width="140" height="50" as="geometry"/>
+                <mxCell id="25" value="Добавить товар в корзину" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="530" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="26">
+                <mxCell id="29" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="26" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="400" y="500" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="26" value="Оформить заказ товаров из корзины" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
-                    <mxGeometry x="530" y="516" width="140" height="50" as="geometry"/>
+                <mxCell id="26" value="Оформить заказ товаров из корзины" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="460" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="27">
+                <mxCell id="31" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="27" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1040" y="139.9999999999999" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="40" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="27">
+                <mxCell id="40" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="27" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="400" y="450" as="targetPoint"/>
                         <Array as="points">
@@ -130,32 +130,16 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="27" value="Посмотреть информацию &lt;br&gt;о товаре" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
+                <mxCell id="27" value="Посмотреть информацию &lt;br&gt;о товаре" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="840" y="310" width="140" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="33">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="400" y="430" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="33" value="Добавить товар в каталог" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
-                    <mxGeometry x="514" y="360" width="140" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="37" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="34">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="400" y="479" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="34" value="Удалить товар из каталога" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
-                    <mxGeometry x="530" y="452" width="140" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="39" style="edgeStyle=none;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="36">
+                <mxCell id="39" style="edgeStyle=none;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;fontFamily=JetBrains Mono;fontSize=10;startArrow=blockThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="36" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="370" y="410" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="36" value="Удаление товара из корзины" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" vertex="1" parent="1">
-                    <mxGeometry x="400" y="300" width="140" height="50" as="geometry"/>
+                <mxCell id="36" value="Удаление товара из корзины" style="ellipse;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="350" width="140" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

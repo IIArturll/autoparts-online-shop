@@ -1,19 +1,15 @@
 package com.autoparts.userservice.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 import java.util.UUID;
-
+@JsonIgnoreProperties("password")
 public class UserDto {
 
-    @NotNull
     private UUID id;
-
-    @NotNull
-    @NotBlank
-    private String username;
 
     @NotNull
     @NotBlank
@@ -37,9 +33,19 @@ public class UserDto {
     @Pattern(regexp = "")
     private String phone;
 
-    public UserDto(UUID id, String username, String password, String email, String firstname, String lastname, String phone) {
+    public UserDto() {
+    }
+
+    public UserDto(UUID id, String password, String email, String firstname, String lastname, String phone) {
         this.id = id;
-        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+    }
+
+    public UserDto(String password, String email, String firstname, String lastname, String phone) {
         this.password = password;
         this.email = email;
         this.firstname = firstname;
@@ -53,14 +59,6 @@ public class UserDto {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {

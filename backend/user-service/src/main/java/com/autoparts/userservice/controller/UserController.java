@@ -4,13 +4,14 @@ import com.autoparts.userservice.core.dto.UserDto;
 import com.autoparts.userservice.core.mappers.UserEntityMapper;
 import com.autoparts.userservice.entity.UserEntity;
 import com.autoparts.userservice.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Validated
+
 @RestController
 @RequestMapping("/api/v1/user")
 public class UserController {
@@ -23,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserDto getById(@PathVariable UUID id) {
+    public UserDto getById(@PathVariable("id") UUID id) {
         return userService.getById(id);
     }
 
@@ -35,5 +36,10 @@ public class UserController {
     @PutMapping
     public UserEntity update(@RequestBody @Validated UserDto userDto) {
         throw new UnsupportedOperationException();
+    }
+
+    @PostMapping
+    public void create(@RequestBody @Valid UserDto user){
+        userService.create(user);
     }
 }
