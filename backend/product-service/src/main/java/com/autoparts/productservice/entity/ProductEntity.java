@@ -3,7 +3,6 @@ package com.autoparts.productservice.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -16,24 +15,26 @@ public class ProductEntity {
     @NotBlank
     private String title;
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category")
     private CategoryEntity category;
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "car_brand")
     private CarBrandEntity brand;
     @NotNull
     @NotBlank
     private String description;
+    @NotNull
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "manufacturer")
+    private ManufacturerEntity manufacturer;
+    @Column(name = "img_url")
+    private String imgUrl;
     @Positive
     private Double price;
     @PositiveOrZero
     private Integer amount;
-
-    //todo
-    // может добавить поставщика для того что бы проверять на наличие такого товара уже в базе
-    // по тайтлу и поставщику и мб другим пораметрам
 
     public ProductEntity(UUID id, String title, CategoryEntity category,
                          CarBrandEntity brand, String description,
@@ -53,11 +54,14 @@ public class ProductEntity {
 
     public ProductEntity(String title, CategoryEntity category,
                          CarBrandEntity brand, String description,
+                         ManufacturerEntity manufacturer, String imgUrl,
                          Double price, Integer amount) {
         this.title = title;
         this.category = category;
         this.brand = brand;
         this.description = description;
+        this.manufacturer = manufacturer;
+        this.imgUrl = imgUrl;
         this.price = price;
         this.amount = amount;
     }
@@ -100,6 +104,22 @@ public class ProductEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ManufacturerEntity getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(ManufacturerEntity manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public Double getPrice() {

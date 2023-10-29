@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface ICarBrandRepository extends CrudRepository<CarBrandEntity,Short> {
-    Optional<CarBrandEntity> findByBrand(String brand);
+    Optional<CarBrandEntity> findByBrandIgnoreCase(String brand);
 }

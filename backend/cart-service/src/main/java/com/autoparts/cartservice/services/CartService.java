@@ -2,24 +2,18 @@ package com.autoparts.cartservice.services;
 
 import com.autoparts.cartservice.controllers.clients.IProductClient;
 import com.autoparts.cartservice.controllers.clients.IUserClient;
-import com.autoparts.cartservice.core.AddProductDTO;
+import com.autoparts.cartservice.core.ReqProductDTO;
 import com.autoparts.cartservice.core.CartDTO;
 import com.autoparts.cartservice.core.CartMapper;
-import com.autoparts.cartservice.core.exceptions.InsufficientQuantityException;
-import com.autoparts.cartservice.core.exceptions.ProductNotFoundException;
-import com.autoparts.cartservice.core.exceptions.UserNotFoundException;
+import com.autoparts.cartservice.core.exceptions.ResourceNotFoundException;
 import com.autoparts.cartservice.entity.CartEntity;
-import com.autoparts.cartservice.entity.CartItemEntity;
 import com.autoparts.cartservice.entity.product.ProductEntity;
 import com.autoparts.cartservice.entity.user.UserEntity;
 import com.autoparts.cartservice.repositories.ICartRepository;
 import com.autoparts.cartservice.services.api.ICartService;
 import jakarta.transaction.Transactional;
-import org.hibernate.annotations.Bag;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -39,19 +33,33 @@ public class CartService implements ICartService {
     @Override
     public CartDTO get(UUID user) {
         UserEntity userEntity = userClient.get(user).getBody()
-                .orElseThrow(() -> new UserNotFoundException("User with id: " + user + ", not found"));
-        CartEntity cartEntity = repository.findByUserId(user).orElseGet(() -> new CartEntity(userEntity));
+                .orElseThrow(() -> new ResourceNotFoundException("User with id: " + user + ", not found"));
+        CartEntity cartEntity = repository.findByUserId(user).orElseGet(() -> {
+            CartEntity entity = new CartEntity(userEntity);
+            return repository.save(entity);
+        });
         return CartMapper.convertCartEntityToDTO(cartEntity);
     }
 
     @Override
-    public void add(AddProductDTO req) {
+    public void add(ReqProductDTO req) {
         ProductEntity product = productClient.getCard(req.productId()).getBody()
-                .orElseThrow(() -> new ProductNotFoundException("Product with id: " + req.productId() + ", not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product with id: " + req.productId() + ", not found"));
         UserEntity user = userClient.get(req.userId()).getBody()
-                .orElseThrow(() -> new UserNotFoundException("User with id: " + req.userId() + ", not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User with id: " + req.userId() + ", not found"));
         CartEntity cartEntity = repository.findByUserId(user.getId()).orElseGet(() -> new CartEntity(user));
         cartEntity.add(product, req.amount());
         repository.save(cartEntity);
+    }
+
+    @Override
+    public void delete(ReqProductDTO req) {
+        UserEntity user = userClient.get(req.userId()).getBody()
+                .orElseThrow(() -> new ResourceNotFoundException("User with id: " + req.userId() + ", not found"));
+        ProductEntity product = productClient.getCard(req.productId()).getBody()
+                .orElseThrow(() -> new ResourceNotFoundException("Product with id: " + req.productId() + ", not found"));
+        CartEntity cartEntity = repository.findByUserId(user.getId()).orElseGet(() -> new CartEntity(user));
+        cartEntity.delete(product,req.amount());
+
     }
 }

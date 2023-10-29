@@ -1,7 +1,6 @@
 package com.autoparts.productservice.core;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
@@ -19,23 +18,30 @@ public class ProductDTO {
     private String brand;
     @NotBlank
     private String description;
+    @NotBlank
+    private String manufacturer;
+    private String imgUrl;
     @Positive
     private Double price;
     @PositiveOrZero
     private Integer amount;
 
+
     public ProductDTO() {
 
     }
 
-    public ProductDTO(UUID id,String title, String category,
-                         String brand, String description,
-                         Double price, Integer amount) {
-        this.id=id;
+    public ProductDTO(UUID id, String title, String category,
+                      String brand, String description,
+                      String manufacturer, String url,
+                      Double price, Integer amount) {
+        this.id = id;
         this.title = title;
         this.category = category;
         this.brand = brand;
         this.description = description;
+        this.manufacturer = manufacturer;
+        this.imgUrl = url;
         this.price = price;
         this.amount = amount;
     }
@@ -79,7 +85,18 @@ public class ProductDTO {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    public String getManufacturer() {
+        return manufacturer;
+    }
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+    public String getImgUrl() {
+        return imgUrl;
+    }
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
     public Double getPrice() {
         return price;
     }
