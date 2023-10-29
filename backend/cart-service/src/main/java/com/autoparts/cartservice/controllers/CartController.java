@@ -1,6 +1,6 @@
 package com.autoparts.cartservice.controllers;
 
-import com.autoparts.cartservice.core.AddProductDTO;
+import com.autoparts.cartservice.core.ReqProductDTO;
 import com.autoparts.cartservice.core.CartDTO;
 import com.autoparts.cartservice.services.api.ICartService;
 import jakarta.validation.Valid;
@@ -22,8 +22,14 @@ public class CartController {
         return ResponseEntity.status(200).body(service.get(id));
     }
     @PostMapping()
-    public ResponseEntity<?> add(@RequestBody @Valid AddProductDTO req) {
+    public ResponseEntity<?> add(@RequestBody @Valid ReqProductDTO req) {
         service.add(req);
         return ResponseEntity.status(201).build();
+    }
+
+    @DeleteMapping()
+    public ResponseEntity<?> delete(@RequestBody @Valid ReqProductDTO req){
+        service.delete(req);
+        return ResponseEntity.status(204).build();
     }
 }

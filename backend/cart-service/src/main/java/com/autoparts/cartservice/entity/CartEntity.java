@@ -1,6 +1,7 @@
 package com.autoparts.cartservice.entity;
 
 import com.autoparts.cartservice.core.exceptions.InsufficientQuantityException;
+import com.autoparts.cartservice.core.exceptions.ResourceNotFoundException;
 import com.autoparts.cartservice.entity.product.ProductEntity;
 import com.autoparts.cartservice.entity.user.UserEntity;
 import jakarta.persistence.*;
@@ -29,6 +30,7 @@ public class CartEntity {
 
     public CartEntity(UserEntity user) {
         this.user = user;
+        this.products = new ArrayList<>();
     }
 
     public CartEntity(UUID id, UserEntity user, List<CartItemEntity> products) {
@@ -85,6 +87,22 @@ public class CartEntity {
 
     public void add(ProductEntity product, Integer amount) {
         this.add(new CartItemEntity(product, amount));
+    }
+
+    public void delete(ProductEntity product, Integer amount) {
+        if (this.products == null) {
+            products = new ArrayList<>();
+        }
+        CartItemEntity existingItem = findCartWithProduct(product);
+        if (existingItem != null) {
+            if (amount >= existingItem.getAmount()) {
+                this.products.remove(existingItem);
+            } else {
+                existingItem.setAmount(existingItem.getAmount()-amount);
+            }
+        } else {
+            throw new ResourceNotFoundException("There is no product with id: " + product.getId() + " in cart");
+        }
     }
 
     private CartItemEntity findCartWithProduct(ProductEntity product) {

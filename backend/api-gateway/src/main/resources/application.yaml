@@ -1,4 +1,3 @@
-
 spring:
   application:
     name: api-gateway
@@ -25,5 +24,9 @@ spring:
           uri: lb://cart-service
           predicates:
             - Path=/api/v1/cart/**
+        - id: order-service-route
+          uri: lb://order-service
+          predicates:
+            - Path=/api/v1/order/**
 server:
   port: 8080
