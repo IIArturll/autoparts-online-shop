@@ -2,26 +2,19 @@
 
 ## Содержание
 
-1. Вход в учётную запись
-2. Регистрация учётной записи
-3. Добавление товара в корзину
+1. Авторизация
+2. Добавление товара в корзину
 
 ---
 
-### 1. Вход в учётную запись
+### 1. Авторизация
 
-<img src='assets/activity_signin.svg' width='700' height='500' />
-
----
-
-### 2. Регистрация учётной записи
-
-<img src='assets/activity_signup.svg' width='700' height='500' />
+<img src='assets/activity_signin_img.svg' width='900' height='900' />
 
 ---
 
-### 3. Добавление товара в корзину
+### 2. Добавление товара в корзину
 
-<img src='assets/activity_add_to_cart.svg' width='700' height='500' />
+<img src='assets/add_to_cart_img.svg' width='700' height='900' />
 
 ---
