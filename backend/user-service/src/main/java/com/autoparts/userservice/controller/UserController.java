@@ -14,6 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/user")
+@Validated
 public class UserController {
 
     private final UserService userService;
@@ -34,12 +35,12 @@ public class UserController {
     }
 
     @PutMapping
-    public UserEntity update(@RequestBody @Validated UserDto userDto) {
+    public UserEntity update(@RequestBody UserDto userDto) {
         throw new UnsupportedOperationException();
     }
 
     @PostMapping
-    public void create(@RequestBody @Valid UserDto user){
+    public void create(@RequestBody UserDto user){
         userService.create(user);
     }
 }

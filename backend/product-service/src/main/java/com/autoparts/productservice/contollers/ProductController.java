@@ -8,12 +8,14 @@ import jakarta.validation.constraints.Positive;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/product")
+@Validated
 public class ProductController {
     private final IProductService service;
 
@@ -22,7 +24,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> add(@Valid @RequestBody ProductDTO product) {
+    public ResponseEntity<?> add(@RequestBody ProductDTO product) {
         service.add(product);
         return ResponseEntity.status(201).build();
     }
