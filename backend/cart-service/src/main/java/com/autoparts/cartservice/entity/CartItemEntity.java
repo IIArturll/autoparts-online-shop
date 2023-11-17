@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "cart_item",schema = "autoparts_shop")
+@Table(name = "cart_order_item",schema = "autoparts_shop")
 public class CartItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
