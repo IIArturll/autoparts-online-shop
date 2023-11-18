@@ -22,7 +22,7 @@ public class CartEntity {
     @JoinTable(name = "cart_product", schema = "autoparts_shop",
             joinColumns = @JoinColumn(name = "cart_id"),
             inverseJoinColumns = @JoinColumn(name = "cart_item_id"))
-    private List<CartItemEntity> products;
+    private List<CartOrderItemEntity> products;
 
     public CartEntity() {
         this.products = new ArrayList<>();
@@ -33,7 +33,7 @@ public class CartEntity {
         this.products = new ArrayList<>();
     }
 
-    public CartEntity(UUID id, UserEntity user, List<CartItemEntity> products) {
+    public CartEntity(UUID id, UserEntity user, List<CartOrderItemEntity> products) {
         this.id = id;
         this.user = user;
         this.products = products;
@@ -55,20 +55,20 @@ public class CartEntity {
         this.user = user;
     }
 
-    public List<CartItemEntity> getProducts() {
+    public List<CartOrderItemEntity> getProducts() {
         return products;
     }
 
-    public void setProducts(List<CartItemEntity> products) {
+    public void setProducts(List<CartOrderItemEntity> products) {
         this.products = products;
     }
 
-    public void add(CartItemEntity cartItem) {
+    public void add(CartOrderItemEntity cartItem) {
         if (this.products == null) {
             products = new ArrayList<>();
         }
         ProductEntity product = cartItem.getProduct();
-        CartItemEntity existingItem = findCartWithProduct(product);
+        CartOrderItemEntity existingItem = findCartWithProduct(product);
         if (existingItem != null) {
             Integer newAmount = existingItem.getAmount() + cartItem.getAmount();
             if (newAmount > product.getAmount()) {
@@ -86,14 +86,14 @@ public class CartEntity {
     }
 
     public void add(ProductEntity product, Integer amount) {
-        this.add(new CartItemEntity(product, amount));
+        this.add(new CartOrderItemEntity(product, amount));
     }
 
     public void delete(ProductEntity product, Integer amount) {
         if (this.products == null) {
             products = new ArrayList<>();
         }
-        CartItemEntity existingItem = findCartWithProduct(product);
+        CartOrderItemEntity existingItem = findCartWithProduct(product);
         if (existingItem != null) {
             if (amount >= existingItem.getAmount()) {
                 this.products.remove(existingItem);
@@ -105,7 +105,7 @@ public class CartEntity {
         }
     }
 
-    private CartItemEntity findCartWithProduct(ProductEntity product) {
+    private CartOrderItemEntity findCartWithProduct(ProductEntity product) {
         return products.stream()
                 .filter(item -> item.getProduct().getId().equals(product.getId()))
                 .findFirst()
