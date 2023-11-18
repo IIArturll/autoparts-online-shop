@@ -1,6 +1,7 @@
 package com.autoparts.productservice.services.api;
 
 import com.autoparts.productservice.core.ProductDTO;
+import com.autoparts.productservice.core.ReqProductDTO;
 import com.autoparts.productservice.core.SearchSpecificationDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +15,7 @@ public interface IProductService {
 
     void add(ProductDTO product);
 
-    void increaseAmount(UUID id, Integer amount);
+    void increaseAmount(ReqProductDTO req);
 
-    void delete(UUID id);
+    void deCreaseAmount(ReqProductDTO req);
 }

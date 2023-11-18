@@ -1,12 +1,10 @@
 package com.autoparts.productservice.contollers;
 
+import com.autoparts.productservice.core.ReqProductDTO;
 import com.autoparts.productservice.entity.ProductEntity;
 import com.autoparts.productservice.services.ProductServiceMicro;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -21,7 +19,13 @@ public class ProductControllerMicro {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<ProductEntity>> getCard(@PathVariable UUID id){
+    public ResponseEntity<Optional<ProductEntity>> getCard(@PathVariable UUID id) {
         return ResponseEntity.status(200).body(service.find(id));
+    }
+
+    @DeleteMapping()
+    public ResponseEntity<?> deCreaseAmount(@RequestBody ReqProductDTO req) {
+        service.deCreaseAmount(req);
+        return ResponseEntity.status(204).build();
     }
 }

@@ -2,6 +2,7 @@ package com.autoparts.productservice.services;
 
 import com.autoparts.productservice.core.ProductDTO;
 import com.autoparts.productservice.core.ProductMapper;
+import com.autoparts.productservice.core.ReqProductDTO;
 import com.autoparts.productservice.core.SearchSpecificationDTO;
 import com.autoparts.productservice.core.exceptions.ProductNotFoundException;
 import com.autoparts.productservice.core.exceptions.ResourceAlreadyExist;
@@ -98,17 +99,18 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void increaseAmount(UUID id, Integer amount) {
-        ProductEntity entity = repository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + id + " not found"));
-        entity.setAmount(entity.getAmount() + amount);
+    public void increaseAmount(ReqProductDTO req) {
+        ProductEntity entity = repository.findById(req.productId())
+                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + req.productId()+ " not found"));
+        entity.setAmount(entity.getAmount() + req.amount());
         repository.save(entity);
     }
 
     @Override
-    public void delete(UUID id) {
-        ProductEntity entity = repository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + id + " not found"));
-        repository.delete(entity);
+    public void deCreaseAmount(ReqProductDTO req) {
+        ProductEntity entity = repository.findById(req.productId())
+                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + req.productId() + " not found"));
+        entity.setAmount(entity.getAmount() - req.amount());
+        repository.save(entity);
     }
 }
