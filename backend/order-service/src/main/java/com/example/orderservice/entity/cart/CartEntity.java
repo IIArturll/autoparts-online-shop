@@ -1,9 +1,10 @@
-package com.autoparts.cartservice.entity;
+package com.example.orderservice.entity.cart;
 
-import com.autoparts.cartservice.core.exceptions.InsufficientQuantityException;
-import com.autoparts.cartservice.core.exceptions.ResourceNotFoundException;
-import com.autoparts.cartservice.entity.product.ProductEntity;
-import com.autoparts.cartservice.entity.user.UserEntity;
+import com.example.orderservice.core.exceptions.InsufficientQuantityException;
+import com.example.orderservice.core.exceptions.ResourceNotFoundException;
+import com.example.orderservice.entity.CartOrderItemEntity;
+import com.example.orderservice.entity.product.ProductEntity;
+import com.example.orderservice.entity.user.UserEntity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

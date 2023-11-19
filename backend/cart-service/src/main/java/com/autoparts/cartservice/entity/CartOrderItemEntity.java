@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "cart_item",schema = "autoparts_shop")
-public class CartItemEntity {
+@Table(name = "cart_order_item",schema = "autoparts_shop")
+public class CartOrderItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -16,10 +16,10 @@ public class CartItemEntity {
     private ProductEntity product;
     private Integer amount;
 
-    public CartItemEntity() {
+    public CartOrderItemEntity() {
     }
 
-    public CartItemEntity(ProductEntity product, Integer amount) {
+    public CartOrderItemEntity(ProductEntity product, Integer amount) {
         this.product = product;
         this.amount = amount;
     }

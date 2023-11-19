@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: order-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 1
+    url: jdbc:postgresql://localhost:5432/autoparts-online-shop
+  jpa:
+    show-sql: true
+server:
+  port: 0

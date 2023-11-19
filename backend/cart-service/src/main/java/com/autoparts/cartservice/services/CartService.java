@@ -60,6 +60,6 @@ public class CartService implements ICartService {
                 .orElseThrow(() -> new ResourceNotFoundException("Product with id: " + req.productId() + ", not found"));
         CartEntity cartEntity = repository.findByUserId(user.getId()).orElseGet(() -> new CartEntity(user));
         cartEntity.delete(product,req.amount());
-
+        repository.save(cartEntity);
     }
 }
