@@ -1,12 +1,12 @@
 package com.example.orderservice.controllers;
 
+import com.example.orderservice.core.OrderDTO;
 import com.example.orderservice.services.api.IOrderService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -27,9 +27,34 @@ public class OrderController {
         return ResponseEntity.status(201).build();
     }
 
-    //todo getPage of orders
-    //todo get order by id
-    //todo get all orders for user email
-    //todo issue an order
-    //todo mark order as ready by admin
+
+    @GetMapping("/{email}")
+    public ResponseEntity<Page<OrderDTO>> getOrdersForUser(Pageable page,
+                                                           @PathVariable String email) {
+        return ResponseEntity.status(200).body(
+                service.getPageForUserWhereOrderIsReady(email, page));
+
+    }
+
+    @GetMapping("/collect")
+    public ResponseEntity<Page<OrderDTO>> getOrdersForCollect(Pageable page) {
+        return ResponseEntity.status(200).body(service.getPageOfOrdersWitchIsNotReady(page));
+    }
+
+    @GetMapping()
+    public ResponseEntity<Page<OrderDTO>> getAll(Pageable page) {
+        return ResponseEntity.status(200).body(service.getAllOrders(page));
+    }
+
+    @PutMapping("/{orderId}")
+    public ResponseEntity<?> markAsReady(@PathVariable UUID orderId) {
+        service.markAsReady(orderId);
+        return ResponseEntity.status(200).build();
+    }
+
+    @PutMapping("/issuance/{orderId}")
+    public ResponseEntity<?> issuanceOfOrder(@PathVariable UUID orderId) {
+        service.issuanceOfOrder(orderId);
+        return ResponseEntity.status(200).build();
+    }
 }
