@@ -12,6 +12,10 @@ spring:
         locator:
           enabled: true
       routes:
+        - id: security-authentication-service
+          uri: lb://security-authentication-service
+          predicates:
+            - Path=/api/v1/user/login
         - id: user-service-route
           uri: lb://user-service
           predicates:
