@@ -4,16 +4,17 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-import java.util.UUID;
 
-public class UserDto {
+public class UserCreateDTO {
 
-    private UUID id;
 
     @NotNull
     @NotBlank
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
     private String email;
+    @NotNull
+    @NotBlank
+    private String password;
 
     @NotNull
     @NotBlank
@@ -25,32 +26,26 @@ public class UserDto {
 
     @NotNull
     @NotBlank
+    @Pattern(regexp = "")
     private String phone;
 
-    public UserDto() {
+    public UserCreateDTO() {
     }
 
-    public UserDto(UUID id, String email, String firstname, String lastname, String phone) {
-        this.id = id;
+    public UserCreateDTO(String password, String email, String firstname, String lastname, String phone) {
+        this.password = password;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
     }
 
-    public UserDto(String email, String firstname, String lastname, String phone) {
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phone = phone;
+    public String getPassword() {
+        return password;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

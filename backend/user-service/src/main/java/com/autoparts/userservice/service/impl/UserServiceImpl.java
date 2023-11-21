@@ -1,5 +1,6 @@
 package com.autoparts.userservice.service.impl;
 
+import com.autoparts.userservice.core.dto.UserCreateDTO;
 import com.autoparts.userservice.core.dto.UserDto;
 import com.autoparts.userservice.core.exceptions.ResourceNotFoundException;
 import com.autoparts.userservice.core.exceptions.UserAlreadyExistsException;
@@ -14,10 +15,14 @@ import com.autoparts.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.UUID;
 
 @Service
+@Validated
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private final IUserRepository userRepository;
@@ -34,19 +39,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(UserDto userDto) {
+    public void create(UserCreateDTO userDto) {
         if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("User already exist with email: " + userDto.getEmail());
         }
 
-        UserEntity user = userEntityMapper.toEntity(userDto);
-        Role role = Role.USER;
-        Status status = Status.WAITING_ACTIVATION;
-
+        UserEntity user = new UserEntity();
+        user.setEmail(userDto.getEmail());
+        user.setFirstname(userDto.getFirstname());
+        user.setLastname(userDto.getLastname());
+        user.setPhone(userDto.getPhone());
+        user.setRole(new RoleEntity(Role.USER));
+        user.setStatus(new StatusEntity(Status.ACTIVATED));
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setRole(new RoleEntity(role));
-        user.setStatus(new StatusEntity(status));
-
         userRepository.save(user);
     }
 

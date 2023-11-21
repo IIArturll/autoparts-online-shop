@@ -1,5 +1,6 @@
 package com.autoparts.userservice.controller;
 
+import com.autoparts.userservice.core.dto.UserCreateDTO;
 import com.autoparts.userservice.core.dto.UserDto;
 import com.autoparts.userservice.core.mappers.UserEntityMapper;
 import com.autoparts.userservice.entity.UserEntity;
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping
-    public void create(@RequestBody UserDto user){
+    public void registrate(@RequestBody UserCreateDTO user){
         userService.create(user);
     }
 }
