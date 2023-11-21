@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: security-authentication-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/autoparts-online-shop
+    username: postgres
+    password: 1
+server:
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+token:
+  jwtSecret: secret
+  jwtIssuer: Artik&Egorik
+  jwtLifetime: 1d
+
