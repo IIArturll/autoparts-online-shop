@@ -1,6 +1,6 @@
 package com.example.securityauthenticationservice;
 
-import com.example.securityauthenticationservice.properties.JwtProperty;
+import com.example.securityauthenticationservice.jwt.JwtProperty;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
