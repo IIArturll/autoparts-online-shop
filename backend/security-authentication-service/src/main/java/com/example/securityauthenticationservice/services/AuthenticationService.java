@@ -1,4 +1,4 @@
-package com.example.securityauthenticationservice.security;
+package com.example.securityauthenticationservice.services;
 
 import com.example.securityauthenticationservice.controllers.client.IUserClient;
 import com.example.securityauthenticationservice.core.dtos.MyUserDetails;
@@ -8,7 +8,7 @@ import com.example.securityauthenticationservice.core.exceptions.InvalidPassword
 import com.example.securityauthenticationservice.core.exceptions.ResourceNotFoundException;
 import com.example.securityauthenticationservice.entity.UserEntity;
 import com.example.securityauthenticationservice.jwt.JwtTokenUtil;
-import com.example.securityauthenticationservice.security.api.IAuthenticationService;
+import com.example.securityauthenticationservice.services.api.IAuthenticationService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

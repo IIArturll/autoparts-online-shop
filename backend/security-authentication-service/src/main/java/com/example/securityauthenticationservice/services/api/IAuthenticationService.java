@@ -1,4 +1,4 @@
-package com.example.securityauthenticationservice.security.api;
+package com.example.securityauthenticationservice.services.api;
 
 import com.example.securityauthenticationservice.core.dtos.UserLoginDTO;
 

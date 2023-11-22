@@ -1,4 +1,4 @@
-package com.example.securityauthenticationservice.security;
+package com.example.securityauthenticationservice.services;
 
 import com.example.securityauthenticationservice.controllers.client.IUserClient;
 import com.example.securityauthenticationservice.core.dtos.MyUserDetails;

@@ -1,7 +1,7 @@
 package com.example.securityauthenticationservice.controllers;
 
 import com.example.securityauthenticationservice.core.dtos.UserLoginDTO;
-import com.example.securityauthenticationservice.security.api.IAuthenticationService;
+import com.example.securityauthenticationservice.services.api.IAuthenticationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
