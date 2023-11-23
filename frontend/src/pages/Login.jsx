@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Footer, Navbar } from '../components';
 
 const Login = () => {
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+
+	const handleLogin = async e => {
+		e.preventDefault();
+
+		console.log(
+			JSON.stringify({
+				email,
+				password,
+			})
+		);
+
+		// const response = await fetch('url', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify({
+		// 		email,
+		// 		password,
+		// 	}),
+		// });
+
+		// if (response.status === 200) {
+		// 	const data = await response.json();
+		// 	Cookies.set('bearerToken', data.token, { expires: 7 }); // You can adjust the expiration time as needed
+		// } else {
+		// 	console.error('Login failed');
+		// }
+	};
+
 	return (
 		<>
 			<Navbar />
@@ -11,23 +43,27 @@ const Login = () => {
 				<hr />
 				<div class='row my-4 h-100'>
 					<div className='col-md-4 col-lg-4 col-sm-8 mx-auto'>
-						<form>
-							<div class='my-3'>
-								<label for='display-4'>Email address</label>
+						<form onSubmit={handleLogin}>
+							<div className='my-3'>
+								<label htmlFor='floatingInput'>Email address</label>
 								<input
 									type='email'
-									class='form-control'
+									className='form-control'
 									id='floatingInput'
 									placeholder='name@example.com'
+									value={email}
+									onChange={e => setEmail(e.target.value)}
 								/>
 							</div>
-							<div class='my-3'>
-								<label for='floatingPassword display-4'>Password</label>
+							<div className='my-3'>
+								<label htmlFor='floatingPassword'>Password</label>
 								<input
 									type='password'
-									class='form-control'
+									className='form-control'
 									id='floatingPassword'
 									placeholder='Password'
+									value={password}
+									onChange={e => setPassword(e.target.value)}
 								/>
 							</div>
 							<div className='my-3'>
@@ -42,7 +78,7 @@ const Login = () => {
 								</p>
 							</div>
 							<div className='text-center'>
-								<button class='my-2 mx-auto btn btn-dark' type='submit' enable>
+								<button className='my-2 mx-auto btn btn-dark' type='submit'>
 									Login
 								</button>
 							</div>

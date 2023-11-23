@@ -78,10 +78,10 @@ const Product = () => {
 						<div className='col-md-6 col-md-6 py-5'>
 							<h4 className='text-uppercase text-muted'>{product.category}</h4>
 							<h1 className='display-5'>{product.title}</h1>
-							<p className='lead'>
+							{/* <p className='lead'>
 								{product.rating && product.rating.rate}{' '}
 								<i className='fa fa-star'></i>
-							</p>
+							</p> */}
 							<h3 className='display-6  my-4'>${product.price}</h3>
 							<p className='lead'>{product.description}</p>
 							<button

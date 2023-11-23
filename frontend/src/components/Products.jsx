@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { addCart } from '../redux/action'
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addCart } from '../redux/action';
 
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Products = () => {
-	const [data, setData] = useState([])
-	const [filter, setFilter] = useState(data)
-	const [loading, setLoading] = useState(false)
-	let componentMounted = true
+	const [data, setData] = useState([]);
+	const [filter, setFilter] = useState(data);
+	const [loading, setLoading] = useState(false);
+	let componentMounted = true;
 
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
 	const addProduct = product => {
-		dispatch(addCart(product))
-	}
+		dispatch(addCart(product));
+	};
 
 	useEffect(() => {
 		const getProducts = async () => {
-			setLoading(true)
-			const response = await fetch('https://fakestoreapi.com/products/')
+			setLoading(true);
+			const response = await fetch('https://fakestoreapi.com/products/');
 			if (componentMounted) {
-				setData(await response.clone().json())
-				setFilter(await response.json())
-				setLoading(false)
+				setData(await response.clone().json());
+				setFilter(await response.json());
+				setLoading(false);
 			}
 
 			return () => {
-				componentMounted = false
-			}
-		}
+				componentMounted = false;
+			};
+		};
 
-		getProducts()
-	}, [])
+		getProducts();
+	}, []);
 
 	const Loading = () => {
 		return (
@@ -62,13 +62,13 @@ const Products = () => {
 					<Skeleton height={592} />
 				</div>
 			</>
-		)
-	}
+		);
+	};
 
 	const filterProduct = cat => {
-		const updatedList = data.filter(item => item.category === cat)
-		setFilter(updatedList)
-	}
+		const updatedList = data.filter(item => item.category === cat);
+		setFilter(updatedList);
+	};
 	const ShowProducts = () => {
 		return (
 			<>
@@ -146,11 +146,11 @@ const Products = () => {
 								</div>
 							</div>
 						</div>
-					)
+					);
 				})}
 			</>
-		)
-	}
+		);
+	};
 	return (
 		<>
 			<div className='container my-3 py-3'>
@@ -165,7 +165,7 @@ const Products = () => {
 				</div>
 			</div>
 		</>
-	)
-}
+	);
+};
 
-export default Products
+export default Products;
