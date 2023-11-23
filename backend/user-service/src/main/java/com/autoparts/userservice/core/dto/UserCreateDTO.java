@@ -6,11 +6,10 @@ import jakarta.validation.constraints.Pattern;
 
 
 public class UserCreateDTO {
-
-
     @NotNull
     @NotBlank
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+            message = "illegal format of email,correct example: email@mail.ru , google@gmail.com")
     private String email;
     @NotNull
     @NotBlank
@@ -26,7 +25,6 @@ public class UserCreateDTO {
 
     @NotNull
     @NotBlank
-    @Pattern(regexp = "")
     private String phone;
 
     public UserCreateDTO() {
