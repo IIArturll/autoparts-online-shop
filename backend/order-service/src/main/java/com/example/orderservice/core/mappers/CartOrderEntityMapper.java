@@ -1,4 +1,4 @@
-package com.example.orderservice.core;
+package com.example.orderservice.core.mappers;
 
 import com.example.orderservice.entity.OrderEntity;
 import com.example.orderservice.entity.cart.CartEntity;

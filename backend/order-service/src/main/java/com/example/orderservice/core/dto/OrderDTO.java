@@ -1,8 +1,4 @@
-package com.example.orderservice.core;
-
-import com.example.orderservice.entity.CartOrderItemEntity;
-import com.example.orderservice.entity.user.UserEntity;
-import jakarta.persistence.*;
+package com.example.orderservice.core.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;

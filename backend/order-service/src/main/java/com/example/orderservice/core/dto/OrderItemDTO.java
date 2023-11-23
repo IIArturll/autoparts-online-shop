@@ -1,4 +1,4 @@
-package com.example.orderservice.core;
+package com.example.orderservice.core.dto;
 
 public class OrderItemDTO {
     private ProductDTO product;

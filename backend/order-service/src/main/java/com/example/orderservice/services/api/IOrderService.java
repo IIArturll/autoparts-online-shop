@@ -1,6 +1,6 @@
 package com.example.orderservice.services.api;
 
-import com.example.orderservice.core.OrderDTO;
+import com.example.orderservice.core.dto.OrderDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

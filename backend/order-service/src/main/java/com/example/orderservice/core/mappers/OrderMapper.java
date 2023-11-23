@@ -1,5 +1,8 @@
-package com.example.orderservice.core;
+package com.example.orderservice.core.mappers;
 
+import com.example.orderservice.core.dto.OrderDTO;
+import com.example.orderservice.core.dto.OrderItemDTO;
+import com.example.orderservice.core.dto.ProductDTO;
 import com.example.orderservice.entity.OrderEntity;
 
 public class OrderMapper {

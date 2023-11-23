@@ -2,10 +2,10 @@ package com.example.orderservice.services;
 
 import com.example.orderservice.controllers.clients.ICartClient;
 import com.example.orderservice.controllers.clients.IProductClient;
-import com.example.orderservice.core.CartOrderEntityMapper;
-import com.example.orderservice.core.OrderDTO;
-import com.example.orderservice.core.OrderMapper;
-import com.example.orderservice.core.ReqProductDTO;
+import com.example.orderservice.core.mappers.CartOrderEntityMapper;
+import com.example.orderservice.core.dto.OrderDTO;
+import com.example.orderservice.core.mappers.OrderMapper;
+import com.example.orderservice.core.dto.ReqProductDTO;
 import com.example.orderservice.core.exceptions.InsufficientQuantityException;
 import com.example.orderservice.core.exceptions.ResourceNotFoundException;
 import com.example.orderservice.entity.OrderEntity;

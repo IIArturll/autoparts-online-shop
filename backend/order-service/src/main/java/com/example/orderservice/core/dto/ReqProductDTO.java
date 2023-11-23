@@ -1,4 +1,4 @@
-package com.example.orderservice.core;
+package com.example.orderservice.core.dto;
 
 
 

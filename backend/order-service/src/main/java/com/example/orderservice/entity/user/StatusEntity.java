@@ -1,6 +1,6 @@
 package com.example.orderservice.entity.user;
 
-import com.example.orderservice.core.user.Status;
+import com.example.orderservice.core.enums.Status;
 import jakarta.persistence.*;
 
 @Entity
