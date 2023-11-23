@@ -1,4 +1,4 @@
-package com.autoparts.productservice.core;
+package com.autoparts.productservice.core.dto;
 
 
 

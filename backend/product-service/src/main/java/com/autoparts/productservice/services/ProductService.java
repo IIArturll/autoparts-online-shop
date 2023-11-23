@@ -1,10 +1,10 @@
 package com.autoparts.productservice.services;
 
-import com.autoparts.productservice.core.ProductDTO;
-import com.autoparts.productservice.core.ProductMapper;
-import com.autoparts.productservice.core.ReqProductDTO;
-import com.autoparts.productservice.core.SearchSpecificationDTO;
-import com.autoparts.productservice.core.exceptions.ProductNotFoundException;
+import com.autoparts.productservice.core.dto.ProductDTO;
+import com.autoparts.productservice.core.mappers.ProductMapper;
+import com.autoparts.productservice.core.dto.ReqProductDTO;
+import com.autoparts.productservice.core.dto.SearchSpecificationDTO;
+import com.autoparts.productservice.core.exceptions.ResourceNotFoundException;
 import com.autoparts.productservice.core.exceptions.ResourceAlreadyExist;
 import com.autoparts.productservice.entity.CarBrandEntity;
 import com.autoparts.productservice.entity.CategoryEntity;
@@ -43,7 +43,7 @@ public class ProductService implements IProductService {
     @Override
     public ProductDTO find(UUID uuid) {
         ProductEntity productEntity = repository.findById(uuid).orElseThrow(() ->
-                new ProductNotFoundException("There is no product with this id : " + uuid));
+                new ResourceNotFoundException("There is no product with this id : " + uuid));
         return ProductMapper.convertProductEntityToDTO(productEntity);
     }
 
@@ -101,15 +101,15 @@ public class ProductService implements IProductService {
     @Override
     public void increaseAmount(ReqProductDTO req) {
         ProductEntity entity = repository.findById(req.productId())
-                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + req.productId()+ " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product with id:" + req.productId()+ " not found"));
         entity.setAmount(entity.getAmount() + req.amount());
         repository.save(entity);
     }
 
     @Override
-    public void deCreaseAmount(ReqProductDTO req) {
+    public void decreaseAmount(ReqProductDTO req) {
         ProductEntity entity = repository.findById(req.productId())
-                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + req.productId() + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product with id:" + req.productId() + " not found"));
         entity.setAmount(entity.getAmount() - req.amount());
         repository.save(entity);
     }

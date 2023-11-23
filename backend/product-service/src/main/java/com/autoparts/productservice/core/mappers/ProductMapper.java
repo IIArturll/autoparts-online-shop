@@ -1,5 +1,6 @@
-package com.autoparts.productservice.core;
+package com.autoparts.productservice.core.mappers;
 
+import com.autoparts.productservice.core.dto.ProductDTO;
 import com.autoparts.productservice.entity.CarBrandEntity;
 import com.autoparts.productservice.entity.CategoryEntity;
 import com.autoparts.productservice.entity.ManufacturerEntity;

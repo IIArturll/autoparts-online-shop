@@ -1,11 +1,9 @@
 package com.autoparts.productservice.contollers;
 
-import com.autoparts.productservice.core.ProductDTO;
-import com.autoparts.productservice.core.ReqProductDTO;
-import com.autoparts.productservice.core.SearchSpecificationDTO;
+import com.autoparts.productservice.core.dto.ProductDTO;
+import com.autoparts.productservice.core.dto.ReqProductDTO;
+import com.autoparts.productservice.core.dto.SearchSpecificationDTO;
 import com.autoparts.productservice.services.api.IProductService;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Positive;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +14,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/product")
-@Validated
 public class ProductController {
     private final IProductService service;
 
@@ -48,8 +45,8 @@ public class ProductController {
     }
 
     @DeleteMapping()
-    public ResponseEntity<?> deIncreaseAmount(@RequestBody ReqProductDTO req) {
-        service.deCreaseAmount(req);
+    public ResponseEntity<?> decreaseAmount(@RequestBody ReqProductDTO req) {
+        service.decreaseAmount(req);
         return ResponseEntity.status(204).build();
     }
 }
