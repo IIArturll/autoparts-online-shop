@@ -1,7 +1,7 @@
 package com.autoparts.cartservice.services.api;
 
-import com.autoparts.cartservice.core.ReqProductDTO;
-import com.autoparts.cartservice.core.CartDTO;
+import com.autoparts.cartservice.core.dto.ReqProductDTO;
+import com.autoparts.cartservice.core.dto.CartDTO;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package com.autoparts.cartservice.core;
+package com.autoparts.cartservice.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

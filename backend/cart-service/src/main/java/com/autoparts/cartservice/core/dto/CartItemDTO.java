@@ -1,4 +1,4 @@
-package com.autoparts.cartservice.core;
+package com.autoparts.cartservice.core.dto;
 
 public class CartItemDTO {
     private ProductDTO product;

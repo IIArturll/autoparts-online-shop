@@ -13,4 +13,7 @@ import java.util.UUID;
 public interface IUserClient {
     @GetMapping("/{id}")
     ResponseEntity<Optional<UserEntity>> get(@PathVariable("id") UUID id);
+
+    @GetMapping("/email/{email}")
+    ResponseEntity<Optional<UserEntity>> getByEmail(@PathVariable("email") String email);
 }

@@ -1,4 +1,4 @@
-package com.autoparts.cartservice.core;
+package com.autoparts.cartservice.core.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

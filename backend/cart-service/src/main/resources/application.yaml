@@ -10,3 +10,8 @@ spring:
     show-sql: true
 server:
   port: 0
+
+token:
+  jwtSecret: secret
+  jwtIssuer: Artik&Egorik
+  jwtLifetime: 1d

@@ -1,5 +1,6 @@
 package com.autoparts.cartservice.entity.user;
 
+import com.autoparts.cartservice.core.enums.Status;
 import jakarta.persistence.*;
 
 @Entity

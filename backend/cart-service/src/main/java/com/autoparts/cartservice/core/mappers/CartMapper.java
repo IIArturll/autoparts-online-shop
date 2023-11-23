@@ -1,5 +1,8 @@
-package com.autoparts.cartservice.core;
+package com.autoparts.cartservice.core.mappers;
 
+import com.autoparts.cartservice.core.dto.CartDTO;
+import com.autoparts.cartservice.core.dto.CartItemDTO;
+import com.autoparts.cartservice.core.dto.ProductDTO;
 import com.autoparts.cartservice.entity.CartEntity;
 
 public class CartMapper {
