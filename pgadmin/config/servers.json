@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "autoparts-online-shop",
+      "Group": "autoparts",
+      "Port": 5432,
+      "Username": "postgres",
+      "Host": "autoparts_db",
+      "SSLMode": "prefer",
+      "MaintenanceDB": "postgres"
+    }
+  }
+}

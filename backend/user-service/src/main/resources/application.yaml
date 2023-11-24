@@ -2,16 +2,16 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/autoparts-online-shop
-    username: postgres
-    password: 1
+    url: <db_url> #jdbc:postgresql://localhost:5432/autoparts-online-shop
+    username: <db_username> #postgres
+    password: <db_password> #1
 server:
   port: 0
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: <eureka_server_url> #http://localhost:8761/eureka/
 token:
-  jwtSecret: secret
-  jwtIssuer: Artik&Egorik
-  jwtLifetime: 1d
+  jwtSecret: <jwt_secret> #secret
+  jwtIssuer: <jwt_issuer> #Artik&Egorik
+  jwtLifetime: <jwt_lifetime> #1d
