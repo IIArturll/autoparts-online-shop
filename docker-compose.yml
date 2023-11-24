@@ -1,0 +1,88 @@
+version: '3.5'
+services:
+
+  pgadmin:
+    build: pgadmin
+    image: autoparts_pgadmin:1.0.0
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: cherv@admin.com
+      PGADMIN_DEFAULT_PASSWORD: 1
+    ports:
+      - "82:80"
+
+  autoparts_db:
+    build: database
+    image: autoparts_db:1.0.0
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1
+
+  eureka-server:
+    build: backend/eureka-server
+    image: eureka-server:1.0.0
+    restart: always
+    ports:
+      - "8761:8761"
+
+  api-gateway:
+    build: backend/api-gateway
+    image: api-gateway:1.0.0
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+
+
+  user-service:
+    build: backend/user-service
+    image: user-service:1.0.0
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://autoparts_db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - TOKEN_JWTSECRET=secret
+      - TOKEN_JWTISSUER=artik&egirik
+      - TOKEN_JWTLIFETIME=1d
+
+  product-service:
+    build: backend/product-service
+    image: product-service:1.0.0
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://autoparts_db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - TOKEN_JWTSECRET=secret
+      - TOKEN_JWTISSUER=artik&egirik
+      - TOKEN_JWTLIFETIME=1d
+
+  cart-service:
+    build: backend/cart-service
+    image: cart-srvice:1.0.0
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://autoparts_db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - TOKEN_JWTSECRET=secret
+      - TOKEN_JWTISSUER=artik&egirik
+      - TOKEN_JWTLIFETIME=1d
+
+  order-service:
+    build: backend/cart-service
+    image: cart-service:1.0.0
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://autoparts_db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - TOKEN_JWTSECRET=secret
+      - TOKEN_JWTISSUER=artik&egirik
+      - TOKEN_JWTLIFETIME=1d

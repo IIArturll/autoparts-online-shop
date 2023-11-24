@@ -28,5 +28,9 @@ spring:
           uri: lb://order-service
           predicates:
             - Path=/api/v1/order/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: <eureka_client_service_url>
 server:
   port: 8080
