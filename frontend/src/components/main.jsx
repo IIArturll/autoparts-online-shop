@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Home = () => {
 	return (
@@ -8,17 +8,17 @@ const Home = () => {
 					<div className='card-img-overlay d-flex align-items-center'>
 						<div className='container'>
 							<h5 className='card-title fs-1 text fw-lighter'>
-								Best cars parts
+								Лучшие автозапчасти
 							</h5>
 							<p className='card-text fs-5 d-none d-sm-block '>
-								For the best price in your region
+								По лучшим ценам в вашем регионе
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</>
-	)
-}
+	);
+};
 
-export default Home
+export default Home;

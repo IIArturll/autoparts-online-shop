@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Footer = () => {
 	return (
@@ -7,12 +7,13 @@ const Footer = () => {
 				<div className='d-flex align-items-center justify-content-center pb-5'>
 					<div className='col-md-6'>
 						<p className='mb-3 mb-md-0'>
-							A. Sharameta | E. Maksimchik |
+							A. Шарамета | E. Максимчик |
 							<a
 								href='https://github.com/mosey20000/autoparts-online-shophttps://github.com/mosey20000/autoparts-online-shop'
-								className='text-decoration-underline text-dark fs-5'
+								className='text-decoration-none text-dark fs-6'
 								target='_blank'
 								rel='noreferrer'
+								style={{ paddingLeft: '3px' }}
 							>
 								150502
 							</a>
@@ -29,7 +30,7 @@ const Footer = () => {
 				</div>
 			</footer>
 		</>
-	)
-}
+	);
+};
 
-export default Footer
+export default Footer;

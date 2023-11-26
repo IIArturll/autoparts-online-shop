@@ -1,9 +1,14 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
-	const state = useSelector(state => state.handleCart)
+	const state = useSelector(state => state.handleCart);
+	const authToken = localStorage.getItem('authToken');
+	const handleLogout = () => {
+		localStorage.removeItem('authToken');
+	};
+
 	return (
 		<nav className='navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top'>
 			<div className='container'>
@@ -27,40 +32,55 @@ const Navbar = () => {
 					<ul className='navbar-nav m-auto my-2 text-center'>
 						<li className='nav-item'>
 							<NavLink className='nav-link' to='/'>
-								Home{' '}
+								Главная страница{' '}
 							</NavLink>
 						</li>
 						<li className='nav-item'>
 							<NavLink className='nav-link' to='/product'>
-								Products
+								Товары
 							</NavLink>
 						</li>
 						<li className='nav-item'>
 							<NavLink className='nav-link' to='/about'>
-								About
+								О нас
 							</NavLink>
 						</li>
 						<li className='nav-item'>
 							<NavLink className='nav-link' to='/contact'>
-								Contact
+								Обратная связь
 							</NavLink>
 						</li>
 					</ul>
 					<div className='buttons text-center'>
-						<NavLink to='/login' className='btn btn-outline-dark m-2'>
-							<i className='fa fa-sign-in-alt mr-1'></i> Login
-						</NavLink>
-						<NavLink to='/register' className='btn btn-outline-dark m-2'>
-							<i className='fa fa-user-plus mr-1'></i> Register
-						</NavLink>
-						<NavLink to='/cart' className='btn btn-outline-dark m-2'>
-							<i className='fa fa-cart-shopping mr-1'></i> Cart ({state.length}){' '}
-						</NavLink>
+						{!authToken && (
+							<>
+								<NavLink to='/login' className='btn btn-outline-dark m-2'>
+									<i className='fa fa-sign-in-alt mr-1'></i> Вход
+								</NavLink>
+								<NavLink to='/register' className='btn btn-outline-dark m-2'>
+									<i className='fa fa-user-plus mr-1'></i> Регистрация
+								</NavLink>
+							</>
+						)}
+						{authToken && (
+							<>
+								<NavLink to='/cart' className='btn btn-outline-dark m-2'>
+									<i className='fa fa-cart-shopping mr-1'></i> Корзина
+								</NavLink>
+								<NavLink
+									to='/product'
+									className='btn btn-outline-dark m-2'
+									onClick={handleLogout}
+								>
+									<i className='fa fa-user-plus mr-1'></i> Выйти
+								</NavLink>
+							</>
+						)}
 					</div>
 				</div>
 			</div>
 		</nav>
-	)
-}
+	);
+};
 
-export default Navbar
+export default Navbar;
