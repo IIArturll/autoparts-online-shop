@@ -29,7 +29,10 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<Page<ProductDTO>> getPage(Pageable pageable,
-                                                    @RequestBody SearchSpecificationDTO specification) {
+                                                    @RequestParam("title") String title,
+                                                    @RequestParam("brand") String brand,
+                                                    @RequestParam("category") String category) {
+        SearchSpecificationDTO specification = new SearchSpecificationDTO(title, brand, category);
         return ResponseEntity.status(200).body(service.getPage(pageable, specification));
     }
 
