@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "email",
+      "type": "com.example.mailservice.core.properties.MailProperty",
+      "sourceType": "com.example.mailservice.core.properties.MailProperty"
+    }
+  ],
+  "properties": [
+    {
+      "name": "email.from-address",
+      "type": "java.lang.String",
+      "sourceType": "com.example.mailservice.core.properties.MailProperty"
+    },
+    {
+      "name": "email.subject",
+      "type": "java.lang.String",
+      "sourceType": "com.example.mailservice.core.properties.MailProperty"
+    }
+  ],
+  "hints": []
+}
