@@ -8,6 +8,19 @@ spring:
       import-check:
         enabled: false
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin,RETAIN_UNIQUE
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders:
+              - "*"
       discovery:
         locator:
           enabled: true
@@ -31,6 +44,6 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: <eureka_client_service_url>
+      defaultZone: <eureka_client_service_url> #http://localhost:8761/eureka/
 server:
   port: 8080
