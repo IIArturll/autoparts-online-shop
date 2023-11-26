@@ -12,4 +12,5 @@ public interface UserService {
     void delete(UUID id);
     UserDto getById(UUID id);
     String login(UserLoginDTO user);
+    void verified(String code, String mail);;
 }

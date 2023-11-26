@@ -1,5 +1,6 @@
 package com.autoparts.userservice.service.impl;
 
+import com.autoparts.userservice.controller.clients.IMailClient;
 import com.autoparts.userservice.core.dto.*;
 import com.autoparts.userservice.core.enums.Role;
 import com.autoparts.userservice.core.enums.Status;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 @Transactional
@@ -31,18 +33,21 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenUtil tokenUtil;
     private final MyUserDetailsService userDetailsService;
+    private final IMailClient mailClient;
 
     @Autowired
     public UserServiceImpl(IUserRepository userRepository,
                            UserEntityMapper userEntityMapper,
                            PasswordEncoder passwordEncoder,
                            JwtTokenUtil tokenUtil,
-                           MyUserDetailsService userDetailsService) {
+                           MyUserDetailsService userDetailsService,
+                           IMailClient mailClient) {
         this.userRepository = userRepository;
         this.userEntityMapper = userEntityMapper;
         this.passwordEncoder = passwordEncoder;
         this.tokenUtil = tokenUtil;
         this.userDetailsService = userDetailsService;
+        this.mailClient = mailClient;
     }
 
     @Override
@@ -50,14 +55,14 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("User already exist with email: " + userDto.getEmail());
         }
-
         UserEntity user = new UserEntity();
         user.setEmail(userDto.getEmail());
         user.setFirstname(userDto.getFirstname());
         user.setLastname(userDto.getLastname());
         user.setPhone(userDto.getPhone());
         user.setRole(new RoleEntity(Role.USER));
-        user.setStatus(new StatusEntity(Status.ACTIVATED)); //todo send email to verify now activated
+        user.setStatus(new StatusEntity(Status.WAITING_ACTIVATION));
+        CompletableFuture.runAsync(() -> mailClient.sendSimpleEmail(user.getEmail()));
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userRepository.save(user);
     }
@@ -95,6 +100,17 @@ public class UserServiceImpl implements UserService {
             return tokenUtil.generateToken(userDetails);
         } else {
             throw new InvalidPassword("Invalid password");
+        }
+    }
+
+    public void verified(String code, String mail) {
+        UserEntity user = userRepository.findByEmail(mail).orElseThrow(() ->
+                new ResourceNotFoundException("user with this mail: " + mail + " not found"));
+        if (mailClient.verify(mail, code).getBody()) {
+            user.setStatus(new StatusEntity(Status.ACTIVATED));
+            userRepository.save(user);
+        } else {
+            throw new InvalidPassword("invalid verification code");
         }
     }
 }

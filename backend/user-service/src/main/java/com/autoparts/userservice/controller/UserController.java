@@ -8,6 +8,7 @@ import com.autoparts.userservice.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -52,5 +53,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public String login(@RequestBody @Valid UserLoginDTO user) {
         return userService.login(user);
+    }
+
+    @GetMapping(path = "/verification")
+    @ResponseStatus(HttpStatus.OK)
+    public void verified(@RequestParam(value = "code") String code,
+                                      @RequestParam(value = "mail") String mail) {
+        userService.verified(code, mail);
     }
 }

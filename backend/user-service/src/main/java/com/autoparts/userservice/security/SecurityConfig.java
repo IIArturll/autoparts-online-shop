@@ -40,17 +40,17 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/micro/**").access(
-//                                new WebExpressionAuthorizationManager("hasIpAddress('cart-service')"))
-//                        .requestMatchers("/micro/**").access(
-//                                new WebExpressionAuthorizationManager("hasIpAddress('order-service')"))
-//                        .requestMatchers("/micro/**").access(
-//                                new WebExpressionAuthorizationManager("hasIpAddress('product-service')"))
-                                .requestMatchers(HttpMethod.DELETE, "/api/v1/user/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.POST, "/api/v1/user/login").permitAll()
-                                .requestMatchers(HttpMethod.PUT, "/api/v1/user").denyAll()
-                                .requestMatchers("/api/v1/user/**").permitAll()
-                                .requestMatchers("/micro/**").permitAll()
+                        .requestMatchers("/micro/**").access(
+                                new WebExpressionAuthorizationManager("hasIpAddress('cart-service')"))
+                        .requestMatchers("/micro/**").access(
+                                new WebExpressionAuthorizationManager("hasIpAddress('order-service')"))
+                        .requestMatchers("/micro/**").access(
+                                new WebExpressionAuthorizationManager("hasIpAddress('product-service')"))
+//                        .requestMatchers("/micro/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/user/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/user/login").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/user").denyAll()
+                        .requestMatchers("/api/v1/user/**").permitAll()
                 );
 
         return http.build();
