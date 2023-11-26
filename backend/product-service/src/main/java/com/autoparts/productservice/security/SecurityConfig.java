@@ -40,11 +40,11 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/micro/**").access(
-//                                new WebExpressionAuthorizationManager("hasIpAddress('cart-service')"))
-//                        .requestMatchers("/micro/**").access(
-//                                new WebExpressionAuthorizationManager("hasIpAddress('order-service')"))
-                                .requestMatchers("/micro/**").permitAll()
+                        .requestMatchers("/micro/**").access(
+                                new WebExpressionAuthorizationManager("hasIpAddress('cart-service')"))
+                        .requestMatchers("/micro/**").access(
+                                new WebExpressionAuthorizationManager("hasIpAddress('order-service')"))
+//                                .requestMatchers("/micro/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/product").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.PUT, "/api/v1/product").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/api/v1/product").hasRole("ADMIN")

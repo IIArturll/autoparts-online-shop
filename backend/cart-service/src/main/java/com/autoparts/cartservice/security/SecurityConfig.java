@@ -40,14 +40,9 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/micro/**").access(
-//                                new WebExpressionAuthorizationManager("hasIpAddress('cart-service')"))
-//                        .requestMatchers("/micro/**").access(
-//                                new WebExpressionAuthorizationManager("hasIpAddress('order-service')"))
-                                .requestMatchers("/micro/**").permitAll()
-                                .requestMatchers("/micro/**").access(
-                                        new WebExpressionAuthorizationManager("hasIpAddress('security-authentication-service')"))
-                                .requestMatchers("/api/v1/cart/**").authenticated()
+                        .requestMatchers("/micro/**").access(
+                                new WebExpressionAuthorizationManager("hasIpAddress('order-service')"))
+                        .requestMatchers("/api/v1/cart/**").authenticated()
                 );
 
         return http.build();
