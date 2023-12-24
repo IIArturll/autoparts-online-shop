@@ -1,6 +1,6 @@
 package com.autoparts.userservice.entity;
 
-import com.autoparts.userservice.core.dto.Status;
+import com.autoparts.userservice.core.enums.Status;
 import jakarta.persistence.*;
 
 @Entity

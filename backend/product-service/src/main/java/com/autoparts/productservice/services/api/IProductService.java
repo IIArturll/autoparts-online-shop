@@ -1,8 +1,8 @@
 package com.autoparts.productservice.services.api;
 
-import com.autoparts.productservice.core.ProductDTO;
-import com.autoparts.productservice.core.ReqProductDTO;
-import com.autoparts.productservice.core.SearchSpecificationDTO;
+import com.autoparts.productservice.core.dto.ProductDTO;
+import com.autoparts.productservice.core.dto.ReqProductDTO;
+import com.autoparts.productservice.core.dto.SearchSpecificationDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,5 +17,5 @@ public interface IProductService {
 
     void increaseAmount(ReqProductDTO req);
 
-    void deCreaseAmount(ReqProductDTO req);
+    void decreaseAmount(ReqProductDTO req);
 }

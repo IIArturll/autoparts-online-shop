@@ -1,6 +1,6 @@
 package com.autoparts.productservice.contollers;
 
-import com.autoparts.productservice.core.ReqProductDTO;
+import com.autoparts.productservice.core.dto.ReqProductDTO;
 import com.autoparts.productservice.entity.ProductEntity;
 import com.autoparts.productservice.services.ProductServiceMicro;
 import org.springframework.http.ResponseEntity;

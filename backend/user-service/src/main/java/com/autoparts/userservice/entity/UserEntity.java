@@ -1,7 +1,5 @@
 package com.autoparts.userservice.entity;
 
-import com.autoparts.userservice.core.dto.Role;
-import com.autoparts.userservice.core.dto.Status;
 import jakarta.persistence.*;
 
 import java.util.UUID;

@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: mail-service
+  mail:
+    host: smtp.gmail.com
+    username: sharam.artur@gmail.com #<mail_username>
+    password: dcdc myug vzby dxqj #<mail_password>
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+        smtps:
+          trust: smtp.gmail.com
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres #<database_username>
+    password: 1 #<database_password>
+    url: jdbc:postgresql://localhost:5432/autoparts-online-shop #<database_url>
+server:
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+org:
+  jobrunr:
+    background-job-server:
+      enabled: true
+    dashboard:
+      enabled: true
+      port: 8000
+    miscellaneous:
+      allow-anonymous-data-usage: false
+    jobs:
+      retry-back-off-time-seed: 1
+    database:
+      table-prefix: autoparts
+
+email:
+  fromAddress: sharam.artur@gmail.com  #<fromAddress>
+  subject: Autoparts online shop| Verification #<subject>

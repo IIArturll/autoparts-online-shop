@@ -1,12 +1,14 @@
 package com.autoparts.userservice.controller;
 
+import com.autoparts.userservice.core.dto.UserCreateDTO;
 import com.autoparts.userservice.core.dto.UserDto;
-import com.autoparts.userservice.core.mappers.UserEntityMapper;
+import com.autoparts.userservice.core.dto.UserLoginDTO;
 import com.autoparts.userservice.entity.UserEntity;
 import com.autoparts.userservice.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -14,7 +16,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/user")
-@Validated
 public class UserController {
 
     private final UserService userService;
@@ -25,22 +26,39 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public UserDto getById(@PathVariable("id") UUID id) {
         return userService.getById(id);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable UUID id) {
         userService.delete(id);
     }
 
     @PutMapping
-    public UserEntity update(@RequestBody UserDto userDto) {
+    @ResponseStatus(HttpStatus.OK)
+    public UserEntity update(@RequestBody @Valid UserDto userDto) {
         throw new UnsupportedOperationException();
     }
 
     @PostMapping
-    public void create(@RequestBody UserDto user){
+    @ResponseStatus(HttpStatus.CREATED)
+    public void registrate(@RequestBody @Valid UserCreateDTO user) {
         userService.create(user);
+    }
+
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public String login(@RequestBody @Valid UserLoginDTO user) {
+        return userService.login(user);
+    }
+
+    @GetMapping(path = "/verification")
+    @ResponseStatus(HttpStatus.OK)
+    public void verified(@RequestParam(value = "code") String code,
+                                      @RequestParam(value = "mail") String mail) {
+        userService.verified(code, mail);
     }
 }

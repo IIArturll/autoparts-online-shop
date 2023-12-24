@@ -1,52 +1,69 @@
 package com.autoparts.userservice.service.impl;
 
-import com.autoparts.userservice.core.dto.UserDto;
+import com.autoparts.userservice.controller.clients.IMailClient;
+import com.autoparts.userservice.core.dto.*;
+import com.autoparts.userservice.core.enums.Role;
+import com.autoparts.userservice.core.enums.Status;
+import com.autoparts.userservice.core.exceptions.InvalidPassword;
 import com.autoparts.userservice.core.exceptions.ResourceNotFoundException;
 import com.autoparts.userservice.core.exceptions.UserAlreadyExistsException;
 import com.autoparts.userservice.core.mappers.UserEntityMapper;
-import com.autoparts.userservice.core.dto.Role;
-import com.autoparts.userservice.core.dto.Status;
 import com.autoparts.userservice.entity.RoleEntity;
 import com.autoparts.userservice.entity.StatusEntity;
 import com.autoparts.userservice.entity.UserEntity;
 import com.autoparts.userservice.repository.IUserRepository;
+import com.autoparts.userservice.security.MyUserDetails;
+import com.autoparts.userservice.security.MyUserDetailsService;
+import com.autoparts.userservice.security.jwt.JwtTokenUtil;
 import com.autoparts.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private final IUserRepository userRepository;
     private final UserEntityMapper userEntityMapper;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenUtil tokenUtil;
+    private final MyUserDetailsService userDetailsService;
+    private final IMailClient mailClient;
 
     @Autowired
     public UserServiceImpl(IUserRepository userRepository,
                            UserEntityMapper userEntityMapper,
-                           PasswordEncoder passwordEncoder) {
+                           PasswordEncoder passwordEncoder,
+                           JwtTokenUtil tokenUtil,
+                           MyUserDetailsService userDetailsService,
+                           IMailClient mailClient) {
         this.userRepository = userRepository;
         this.userEntityMapper = userEntityMapper;
         this.passwordEncoder = passwordEncoder;
+        this.tokenUtil = tokenUtil;
+        this.userDetailsService = userDetailsService;
+        this.mailClient = mailClient;
     }
 
     @Override
-    public void create(UserDto userDto) {
+    public void create(UserCreateDTO userDto) {
         if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("User already exist with email: " + userDto.getEmail());
         }
-
-        UserEntity user = userEntityMapper.toEntity(userDto);
-        Role role = Role.USER;
-        Status status = Status.WAITING_ACTIVATION;
-
+        UserEntity user = new UserEntity();
+        user.setEmail(userDto.getEmail());
+        user.setFirstname(userDto.getFirstname());
+        user.setLastname(userDto.getLastname());
+        user.setPhone(userDto.getPhone());
+        user.setRole(new RoleEntity(Role.USER));
+        user.setStatus(new StatusEntity(Status.WAITING_ACTIVATION));
+        CompletableFuture.runAsync(() -> mailClient.sendSimpleEmail(user.getEmail()));
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setRole(new RoleEntity(role));
-        user.setStatus(new StatusEntity(status));
-
         userRepository.save(user);
     }
 
@@ -67,5 +84,33 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Can`t find user with UUID: " + id));
         return userEntityMapper.toDto(user);
+    }
+
+    @Override
+    public String login(UserLoginDTO user) {
+        UserEntity entity = userRepository.findByEmail(user.getEmail())
+                .orElseThrow(() -> new ResourceNotFoundException("user with email: " + user.getEmail()
+                        + " not found"));
+        if (entity.getStatus().getStatus() == Status.WAITING_ACTIVATION) {
+            throw new ResourceNotFoundException("authorization is not available," +
+                    " the account is not verified");
+        }
+        if (passwordEncoder.matches(user.getPassword(), entity.getPassword())) {
+            MyUserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
+            return tokenUtil.generateToken(userDetails);
+        } else {
+            throw new InvalidPassword("Invalid password");
+        }
+    }
+
+    public void verified(String code, String mail) {
+        UserEntity user = userRepository.findByEmail(mail).orElseThrow(() ->
+                new ResourceNotFoundException("user with this mail: " + mail + " not found"));
+        if (mailClient.verify(mail, code).getBody()) {
+            user.setStatus(new StatusEntity(Status.ACTIVATED));
+            userRepository.save(user);
+        } else {
+            throw new InvalidPassword("invalid verification code");
+        }
     }
 }

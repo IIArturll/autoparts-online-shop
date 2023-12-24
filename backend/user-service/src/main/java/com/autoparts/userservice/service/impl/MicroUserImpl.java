@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
+
 @Service
 public class MicroUserImpl implements MicroUserService {
     private final IUserRepository repository;
@@ -19,4 +20,11 @@ public class MicroUserImpl implements MicroUserService {
     public Optional<UserEntity> get(UUID id) {
         return repository.findById(id);
     }
+
+    @Override
+    public Optional<UserEntity> getByEmail(String email) {
+        return repository.findByEmail(email);
+    }
+
+
 }

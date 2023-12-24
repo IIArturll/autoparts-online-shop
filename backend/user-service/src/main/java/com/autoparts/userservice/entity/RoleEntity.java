@@ -1,6 +1,6 @@
 package com.autoparts.userservice.entity;
 
-import com.autoparts.userservice.core.dto.Role;
+import com.autoparts.userservice.core.enums.Role;
 import jakarta.persistence.*;
 
 @Entity

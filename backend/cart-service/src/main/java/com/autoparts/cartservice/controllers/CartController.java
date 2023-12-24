@@ -1,9 +1,8 @@
 package com.autoparts.cartservice.controllers;
 
-import com.autoparts.cartservice.core.ReqProductDTO;
-import com.autoparts.cartservice.core.CartDTO;
+import com.autoparts.cartservice.core.dto.ReqProductDTO;
+import com.autoparts.cartservice.core.dto.CartDTO;
 import com.autoparts.cartservice.services.api.ICartService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

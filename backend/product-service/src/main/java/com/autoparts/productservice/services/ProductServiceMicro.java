@@ -1,8 +1,8 @@
 package com.autoparts.productservice.services;
 
 
-import com.autoparts.productservice.core.ReqProductDTO;
-import com.autoparts.productservice.core.exceptions.ProductNotFoundException;
+import com.autoparts.productservice.core.dto.ReqProductDTO;
+import com.autoparts.productservice.core.exceptions.ResourceNotFoundException;
 import com.autoparts.productservice.entity.ProductEntity;
 import com.autoparts.productservice.repositories.IProductRepository;
 import com.autoparts.productservice.services.api.IProductServiceMicro;
@@ -29,7 +29,7 @@ public class ProductServiceMicro implements IProductServiceMicro {
     @Override
     public void deCreaseAmount(ReqProductDTO req) {
         ProductEntity entity = repository.findById(req.productId())
-                .orElseThrow(() -> new ProductNotFoundException("Product with id:" + req.productId() + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product with id:" + req.productId() + " not found"));
         entity.setAmount(entity.getAmount() - req.amount());
         repository.save(entity);
     }

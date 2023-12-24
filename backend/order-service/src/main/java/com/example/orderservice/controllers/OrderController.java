@@ -1,7 +1,8 @@
 package com.example.orderservice.controllers;
 
-import com.example.orderservice.core.OrderDTO;
+import com.example.orderservice.core.dto.OrderDTO;
 import com.example.orderservice.services.api.IOrderService;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/order")
-@Validated
 public class OrderController {
 
     private final IOrderService service;
@@ -30,7 +30,10 @@ public class OrderController {
 
     @GetMapping("/{email}")
     public ResponseEntity<Page<OrderDTO>> getOrdersForUser(Pageable page,
-                                                           @PathVariable String email) {
+                                                           @PathVariable
+                                                           @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+                                                                   message = "illegal format of email,correct example: email@mail.ru , google@gmail.com")
+                                                           String email) {
         return ResponseEntity.status(200).body(
                 service.getPageForUserWhereOrderIsReady(email, page));
 

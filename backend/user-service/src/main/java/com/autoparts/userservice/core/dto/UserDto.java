@@ -1,23 +1,19 @@
 package com.autoparts.userservice.core.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 import java.util.UUID;
-@JsonIgnoreProperties("password")
+
 public class UserDto {
 
     private UUID id;
 
     @NotNull
     @NotBlank
-    private String password;
-
-    @NotNull
-    @NotBlank
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+            message = "illegal format of email,correct example: email@mail.ru , google@gmail.com")
     private String email;
 
     @NotNull
@@ -30,23 +26,20 @@ public class UserDto {
 
     @NotNull
     @NotBlank
-    @Pattern(regexp = "")
     private String phone;
 
     public UserDto() {
     }
 
-    public UserDto(UUID id, String password, String email, String firstname, String lastname, String phone) {
+    public UserDto(UUID id, String email, String firstname, String lastname, String phone) {
         this.id = id;
-        this.password = password;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
     }
 
-    public UserDto(String password, String email, String firstname, String lastname, String phone) {
-        this.password = password;
+    public UserDto(String email, String firstname, String lastname, String phone) {
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -59,14 +52,6 @@ public class UserDto {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {

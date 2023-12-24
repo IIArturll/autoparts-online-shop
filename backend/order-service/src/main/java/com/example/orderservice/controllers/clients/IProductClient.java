@@ -1,6 +1,6 @@
 package com.example.orderservice.controllers.clients;
 
-import com.example.orderservice.core.ReqProductDTO;
+import com.example.orderservice.core.dto.ReqProductDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

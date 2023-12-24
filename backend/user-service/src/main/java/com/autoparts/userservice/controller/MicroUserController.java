@@ -24,4 +24,10 @@ public class MicroUserController {
     public ResponseEntity<Optional<UserEntity>> get(@PathVariable("id") UUID id) {
         return ResponseEntity.status(200).body(service.get(id));
     }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Optional<UserEntity>> getByEmail(@PathVariable("email")
+                                                           String email) {
+        return ResponseEntity.status(200).body(service.getByEmail(email));
+    }
 }

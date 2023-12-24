@@ -2,9 +2,9 @@ package com.autoparts.cartservice.services;
 
 import com.autoparts.cartservice.controllers.clients.IProductClient;
 import com.autoparts.cartservice.controllers.clients.IUserClient;
-import com.autoparts.cartservice.core.ReqProductDTO;
-import com.autoparts.cartservice.core.CartDTO;
-import com.autoparts.cartservice.core.CartMapper;
+import com.autoparts.cartservice.core.dto.ReqProductDTO;
+import com.autoparts.cartservice.core.dto.CartDTO;
+import com.autoparts.cartservice.core.mappers.CartMapper;
 import com.autoparts.cartservice.core.exceptions.ResourceNotFoundException;
 import com.autoparts.cartservice.entity.CartEntity;
 import com.autoparts.cartservice.entity.product.ProductEntity;
